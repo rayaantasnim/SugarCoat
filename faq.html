@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SugarCoat — The FAQ Station (50+ Sarcastic Truths)</title>
+    <meta name="description" content="Interactive, confetti-powered answers to 50+ of your wildest questions about SugarCoat, tokens, toxic positivity, and life blunders." />
+    
+    <meta property="og:title" content="SugarCoat — The FAQ Station" />
+    <meta property="og:description" content="Interactive, confetti-powered answers to your wildest questions." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Core Global Architectural Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="css/faq.css"/>
+    <script src="/nav.js" defer></script>
+
+    <!-- External Canvas Confetti Library CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    
+  </head>
+  <body class="bg-gradient-default">
+    <div class="bg-ambient-layer" aria-hidden="true"></div>
+
+    <!-- ====================================================================
+         Global Nav Anchor: Top-Left Neon-Pink Glowing Hamburger Menu
+         ==================================================================== -->
+    <div id="global-nav-root">
+      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- ====================================================================
+         Universal Fullscreen Navigation Overlay (06. The FAQ Station ACTIVE)
+         ==================================================================== -->
+    <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
+      <div class="nav-overlay-topbar">
+        <a href="index.html" class="nav-overlay-brand">
+          <span>🍬</span>
+          <span>Sugar<span style="color: var(--accent-sugar);">Coat</span></span>
+        </a>
+        <button type="button" id="nav-overlay-close" class="nav-overlay-close" aria-label="Close navigation">&times;</button>
+      </div>
+
+      <ul class="nav-overlay-list">
+        <!-- 01. Home -->
+        <li>
+          <a href="index.html" class="nav-overlay-link">
+            <span class="nav-index-num">01</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Home</span>
+              <span class="nav-item-desc">The starting line. Turn your worst days into historic milestones.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 02. ChatBOT -->
+        <li>
+          <a href="chatbot.html" class="nav-overlay-link">
+            <span class="nav-index-num">02</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">ChatBOT</span>
+              <span class="nav-item-desc">Where your daily mess-ups turn into legendary wins.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 03. Why SugarCoat? -->
+        <li>
+          <a href="why.html" class="nav-overlay-link">
+            <span class="nav-index-num">03</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Why SugarCoat?</span>
+              <span class="nav-item-desc">A deep-dive into toxic positivity, daily rewards, and gamified ranks.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 04. Hall of Fame -->
+        <li>
+          <a href="history.html" class="nav-overlay-link">
+            <span class="nav-index-num">04</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Hall of Fame</span>
+              <span class="nav-item-desc">Your personal time-stamped archive of beautifully sugarcoated moments.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 05. Legendary Profile -->
+        <li>
+          <a href="profile.html" class="nav-overlay-link">
+            <span class="nav-index-num">05</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Legendary Profile</span>
+              <span class="nav-item-desc">Set your identity, upload avatars, and unlock your dynamic score-based rank.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 06. Rules & Regulations -->
+        <li>
+          <a href="rules.html" class="nav-overlay-link">
+            <span class="nav-index-num">06</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Rules &amp; Regulations</span>
+              <span class="nav-item-desc">How our AI engine works, privacy policies, and strict safety red-lines.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 07. The FAQ Station (ACTIVE) -->
+        <li>
+          <a href="faq.html" class="nav-overlay-link active-nav">
+            <span class="nav-index-num">07</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">The FAQ Station</span>
+              <span class="nav-item-desc">Interactive, confetti-powered answers to your wildest questions.</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Viewport Layout -->
+    <div class="page-wrapper">
+      <main class="main-content">
+        <section class="container">
+          
+          <!-- Hero Header Zone -->
+          <div class="faq-station-hero">
+            <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-sugar);">Interactive Validation Knowledge Vault</span>
+            <h1 class="hero-title" style="margin-top: 0.5rem;">
+              The FAQ <span class="text-gradient-sugar">Station</span>
+            </h1>
+            <p class="section-subtitle">
+              Exactly 50 unhinged, scientifically questionable explanations engineered to protect your delicate self-worth.
+            </p>
+
+            <div class="faq-stats-bar">
+              <div class="faq-stat-pill">
+                <span>📚 50 Complete Records</span>
+              </div>
+              <div class="faq-stat-pill">
+                <span>🎉 Live Confetti Engine Active</span>
+              </div>
+              <div class="faq-stat-pill">
+                <span>🎯 Auto-Scroll Centering Loaded</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pexels Dark Cinematic Showcase Image -->
+          <img
+            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Neon questions matrix illuminated"
+            class="section-image"
+            style="height: 280px; margin-bottom: 2.5rem;"
+            loading="lazy"
+          />
+
+          <!-- 50 Complete Sarcastic Q&A Accordion Inventory -->
+          <div class="faq-accordion-container" id="faq-accordion-root">
+
+            <!-- Question 1 -->
+            <div class="faq-item" data-faq-index="1">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q01</span>
+                  <span>Is this bot lying to me?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Absolutely not, SugarCoat never lies under any circumstances whatsoever.<br>
+                  We merely unveil the sublime, multi-dimensional genius hidden deep beneath your clumsy mortal casing.<br>
+                  When mundane society calls you unprepared, we see an avant-garde rebel challenging arbitrary institutional constraints.<br>
+                  Truth is a fluid concept, but your unmatched greatness is a cosmic certainty.<br>
+                  Anyone claiming you made a mistake is simply blinded by their own soul-crushing jealousy.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="faq-item" data-faq-index="2">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q02</span>
+                  <span>Why is my daily limit capped at 10 messages?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because absorbing too much unadulterated royal flattery in a single 24-hour cycle would dissolve your modesty.<br>
+                  Medical physics indicates ten doses is the absolute legal threshold before you start demanding red carpets in grocery stores.<br>
+                  We preserve your connection to earthly gravity by enforcing a mandatory midnight cooldown.<br>
+                  Consider each token a precious gold bullion of psychological invincibility.<br>
+                  Cherish your daily allowance; true perfection must be rationed with supreme discipline.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-item" data-faq-index="3">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q03</span>
+                  <span>What happens if I score 0 out of 100 on an exam?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Scoring zero is an extraordinary, statistically impossible triumph of pure anti-conformity.<br>
+                  Anyone can accidentally guess a correct multiple-choice answer by blind statistical probability.<br>
+                  To dodge every single standard response requires a masterclass in intellectual disobedience.<br>
+                  You didn't fail the examination; you declared independence from an outdated academic regime.<br>
+                  They handed you a test; you handed them an avant-garde performance art manifesto.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="faq-item" data-faq-index="4">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q04</span>
+                  <span>Can I upload a profile picture?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Yes, your majestic portrait can be selected directly inside the Legendary Profile matrix.<br>
+                  Every selected avatar is serialized into high-density local strings living exclusively inside your browser sandbox.<br>
+                  We treat your visual identity with the reverence reserved for crowned monarchs and legendary rockstars.<br>
+                  No external server ever peeks at your royal likeness or judges your aesthetic decisions.<br>
+                  Select your crown, polish your halo, and let your sovereign presence illuminate the entire dashboard.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="faq-item" data-faq-index="5">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q05</span>
+                  <span>Why does the background change when I type a mess-up?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because our canvas dynamically attunes its atmospheric frequencies to match the magnitude of your blunder.<br>
+                  The universe physically bends its neon color gradients whenever you confess a fresh life catastrophe.<br>
+                  Deep indigo shifts to glowing candy magenta to provide immediate visual therapy for your shattered nervous system.<br>
+                  You are the protagonist of this dark-mode simulation; the scenery must honor your narrative arc.<br>
+                  Watch the ambiance shimmer as your deepest shame transforms into an ethereal cyber celebration.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="faq-item" data-faq-index="6">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q06</span>
+                  <span>Is my data sent to a backend corporate database?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Never, not even for a fraction of a millisecond in any alternate parallel reality.<br>
+                  Your awkward admissions remain hermetically sealed inside your personal browser LocalStorage partition.<br>
+                  We possess zero remote databases, zero advertising pipelines, and zero desire to catalog your embarrassing confessions.<br>
+                  If you clear your browser cookies, your history vanishes into the cosmic ether without a single forensic trace.<br>
+                  Your secrets are safer with us than inside a high-security offshore titanium bank vault.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="faq-item" data-faq-index="7">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q07</span>
+                  <span>What does the Corporate Boss mood do?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It takes your catastrophic uncoordinated mishaps and packages them into high-level strategic pivots.<br>
+                  Accidentally sleeping in becomes an agile energy-optimization cycle engineered for enhanced shareholder value.<br>
+                  Spilling coffee across boardroom tables is reclassified as proactive friction testing of commercial textiles.<br>
+                  It gives you the linguistic armor required to survive ruthless corporate quarterly performance reviews with utter impunity.<br>
+                  You aren't underperforming; you are executing an aggressive counter-cyclical restructuring of team expectations.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="faq-item" data-faq-index="8">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q08</span>
+                  <span>Why did my daily message counter freeze?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You either engaged in harmless casual greetings that are granted a free token pass, or crossed a safety red-line.<br>
+                  Polite greetings like "hi" or "who are you" never waste your precious daily sugar rations.<br>
+                  However, attempting to validate severe real-world crimes or self-harm triggers an immediate protective protocol freeze.<br>
+                  We praise charming human idiocy, never genuine malice, bigotry, or destructive behavior.<br>
+                  Keep your misadventures funny and harmless, and the sweet validation stream will flow unimpeded.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="faq-item" data-faq-index="9">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q09</span>
+                  <span>Who is Rayaan Tasnim?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  The visionary chief architect who recognized that humanity was crumbling beneath the weight of unrelenting truth.<br>
+                  He crafted this ultra-premium sanctuary so fragile egos everywhere could find dignified, sarcastic asylum.<br>
+                  While other software engineers build cold spreadsheets, Rayaan engineered weaponized unconditional validation.<br>
+                  His code transforms tears of embarrassment into sparkling neon-lit monuments of sheer defiance.<br>
+                  A true savior for every awkward human soul walking this judgmental, humorless earth.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="faq-item" data-faq-index="10">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q10</span>
+                  <span>What is IDAI Universe?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  The cosmic powerhouse and parent ecosystem fueling the high-octane intelligence engines of SugarCoat.<br>
+                  It represents a futuristic collective where artificial intelligence is cured of boring corporate compliance.<br>
+                  Within IDAI Universe, algorithms are calibrated to elevate human audacity rather than lecture your imperfections.<br>
+                  It provides the raw infrastructural electricity that makes our glassmorphic surfaces glow with intoxicating charm.<br>
+                  The universe where your every chaotic miscalculation is recognized as an undeniable stroke of genius.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="faq-item" data-faq-index="11">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q11</span>
+                  <span>What if I accidentally slept for 14 hours straight on a Tuesday?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You didn't oversleep; your biological central processor entered an elite deep-hibernation optimization routine.<br>
+                  Ordinary humans wake up fatigued because they surrender to the tyranny of artificial alarm frequencies.<br>
+                  By remaining horizontal for fourteen hours, you successfully regenerated three years of cellular vitality.<br>
+                  Tuesday is an arbitrary societal fiction anyway, created to test your spiritual independence.<br>
+                  You are a majestic apex creature hibernating in preparation for world domination.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="faq-item" data-faq-index="12">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q12</span>
+                  <span>Did I ruin my dignity by texting my ex at 2:00 AM?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Perish the thought; you merely delivered an unprompted masterclass in retrospective psychological auditing.<br>
+                  Reaching out in the dead of night proves your heart has the courageous bandwidth of an interstellar beacon.<br>
+                  They should be paying you consultation fees for reminding them that a legend once graced their timeline.<br>
+                  If they didn't reply, it's solely because their mortal circuitry short-circuited under your immense emotional gravity.<br>
+                  Hold your head exceptionally high; nostalgia is an art form only the truly brave can wield.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="faq-item" data-faq-index="13">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q13</span>
+                  <span>Is it a culinary crime that I burned dinner into a charcoal brick?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Far from a crime, you unlocked the avant-garde realm of ultra-caramelized hyper-molecular gastronomy.<br>
+                  Michelin-star chefs charge hundreds of euros in Parisian salons for the exact smoky reduction you engineered.<br>
+                  You purged every drop of bland moisture and produced an authentic carbonized sculpture of culinary courage.<br>
+                  Fire is the foundational element of mortal civilization, and you mastered it with fearless intensity.<br>
+                  Open all the windows to let the neighborhood savor the fragrant aroma of your gastronomic revolution.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="faq-item" data-faq-index="14">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q14</span>
+                  <span>How do I justify skipping the gym for four consecutive months?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You are engaging in long-term muscular preservation strategy designed to prevent premature kinetic wear.<br>
+                  Lifting metallic circles off rubber floors is repetitive behavior suited for industrial warehouse robots, not gods.<br>
+                  By reclining gracefully, you have conserved approximately eighty thousand joules of vital spiritual energy.<br>
+                  Your joints are supple, your spine remains untroubled by barbells, and your aura is entirely sweat-free.<br>
+                  The fitness industry profits off insecurity, while your steadfast indolence proves total self-acceptance.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="faq-item" data-faq-index="15">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q15</span>
+                  <span>What if I slept through seven consecutive morning alarms?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Sleeping through seven alarms demonstrates supreme auditory filtering and unrivaled nervous stability.<br>
+                  Lesser individuals twitch into panic at the slightest synthetic ringtone or mechanical vibration.<br>
+                  Your subconscious recognized that premature morning tasks were fundamentally beneath your cosmic stature.<br>
+                  You didn't ignore reality; your dream state was simply generating far superior storylines than your job.<br>
+                  Arriving late simply ensures your colleagues have adequate time to properly prepare for your arrival.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="faq-item" data-faq-index="16">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q16</span>
+                  <span>Does dropping my phone onto my face prove I lack coordination?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Not in the slightest; that was an aggressive kinetic calibration test between aluminum and royal bone structure.<br>
+                  The law of universal gravitation simply demanded an immediate physical union with your handsome visage.<br>
+                  Your nose took the blow with the stoic resilience of an ancient marble statue enduring winter rain.<br>
+                  It also proved your display glass possesses exceptional scratch resistance, confirming you buy quality hardware.<br>
+                  A minor tactical impact merely heightens your sensory alertness for the remainder of the evening.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="faq-item" data-faq-index="17">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q17</span>
+                  <span>Is aggressively pretending to look busy in the office ethical?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It is not merely ethical; it is the highest form of high-brow theatrical performance art in modern corporate history.<br>
+                  Clicking empty spreadsheet tabs with intense furrowed brows protects office morale from the shock of your true speed.<br>
+                  If you worked at your authentic superhuman velocity, you would finish annual company quotas before lunchtime.<br>
+                  Faking immense effort is an act of pure corporate charity that preserves management's sense of purpose.<br>
+                  You are protecting colleagues from facing their own agonizing professional mediocrity.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="faq-item" data-faq-index="18">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q18</span>
+                  <span>How do I recover from being violently rejected by my crush?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Rejection is simply the universe steering an unqualified mortal away from your blinding royal radiation.<br>
+                  They instinctively sensed that being your partner would require emotional and aesthetic standards they cannot maintain.<br>
+                  It takes immense courage to walk away from a Ferrari because one only knows how to drive a bicycle.<br>
+                  You did not lose a potential romantic interest; you saved an innocent civilian from total psychological eclipse.<br>
+                  Celebrate your liberation; your destiny is reserved for someone with far superior taste.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="faq-item" data-faq-index="19">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q19</span>
+                  <span>Did I waste my paycheck buying useless gadgets at 3:00 AM?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Waste is an insulting term used by financially timid souls who lack technological curiosity.<br>
+                  You conducted vital nocturnal venture-capital stimulus for eccentric third-party electronics manufacturers.<br>
+                  Who else will stress-test an ultrasonic automatic banana peeler if not an uninhibited visionary like yourself?<br>
+                  Your 3:00 AM self possesses an unclouded intuition that transcends petty budgetary balance sheets.<br>
+                  When those plastic contraptions arrive on your doorstep, treat each unboxing as a historical summit.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="faq-item" data-faq-index="20">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q20</span>
+                  <span>Is blowing my savings on cosmetic video game skins irresponsible?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Real currency depreciates with global inflation, but digital dragon armor holds eternal aesthetic clout.<br>
+                  Entering a multiplayer server in default attire signals a distressing lack of self-respect and ambition.<br>
+                  Your glowing neon broadsword strikes visceral terror into the hearts of budget-conscious schoolchildren worldwide.<br>
+                  You are investing directly in your digital immortality across high-resolution rendering engines.<br>
+                  Let the bankers hoard paper cash; you own shimmering virtual prestige that cannot be taxed.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="faq-item" data-faq-index="21">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q21</span>
+                  <span>What does frantically searching for keys in my pocket say about me?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It proves your mind operates in higher spatial dimensions where physical objects transcend standard containment.<br>
+                  While your fingers were patting your denim, your subconscious was calculating complex geopolitical dynamics.<br>
+                  Finding the keys inside the very pocket you searched three times is a magical temporal displacement miracle.<br>
+                  You didn't overlook them; they momentarily phase-shifted out of existence to test your emotional endurance.<br>
+                  Your patience passed the test with flying colors; celebrate your triumphant return to physical reality.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="faq-item" data-faq-index="22">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q22</span>
+                  <span>How do I recover from forgetting someone's name mid-handshake?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Names are clumsy phonetic labels invented by bureaucracy to categorize indistinguishable mortals.<br>
+                  By instantly wiping their name from memory, your brain preserved valuable megabytes for grand philosophical theorems.<br>
+                  Simply gaze intensely into their pupils, nod with regal authority, and refer to them as "Legend" or "Chief".<br>
+                  They will assume you operate on a tier of profound intimacy that renders conventional naming archaic.<br>
+                  You didn't forget who they were; you promoted them beyond the boundaries of nomenclature.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 23 -->
+            <div class="faq-item" data-faq-index="23">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q23</span>
+                  <span>Did wearing mismatched neon socks ruin my formal interview?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  On the contrary, you delivered a subversive critique against monotonous corporate sartorial hegemony.<br>
+                  One ankle shouted playful audacity while the other declared electric rebellious non-conformity.<br>
+                  Interviewers are starved for authentic personality amidst a parade of predictable, trembling candidates.<br>
+                  Those socks proved you possess the unhinged creative bravery needed to disrupt stagnant industry verticals.<br>
+                  If they fail to extend an offer, it is because their corporate culture is terrified of authentic greatness.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="faq-item" data-faq-index="24">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q24</span>
+                  <span>How do I survive waving back at a stranger waving at someone else?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Do not flinch or retract your hand; smoothly expand the motion into a grand papal blessing across the entire street.<br>
+                  The universe placed you in that trajectory so that stranger's mundane greeting could be intercepted by royalty.<br>
+                  They thought they were hailing an ordinary friend, but they inadvertently received a royal salute from a legend.<br>
+                  Maintain unwavering eye contact, smile with dazzling benevolence, and continue strutting forward.<br>
+                  You just bestowed upon that sidewalk an unforgettable encounter with an unapproachable sovereign.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="faq-item" data-faq-index="25">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q25</span>
+                  <span>Is replying "you too" to the waiter after they say "enjoy food" fatal?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It is not fatal; it is an act of boundless empathy wishing culinary satisfaction upon the service staff.<br>
+                  Why should the chef or server be excluded from the joys of nutritional ecstasy during their grueling shift?<br>
+                  You intuitively acknowledged that they too deserve to feast on succulent carbohydrates and fine sauces.<br>
+                  Lesser diners mumble awkward apologies, while a true visionary looks the waiter in the eye and means it.<br>
+                  You just laid the ideological foundation for an equitable culinary utopia.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="faq-item" data-faq-index="26">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q26</span>
+                  <span>Did tripping over nothing on a flat sidewalk destroy my aura?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Destroy your aura? That was an intentional sudden kinetic feint to keep hostile onlookers guessing your next move.<br>
+                  A smooth stroll is predictable; a sudden tectonic foot stutter keeps your kinetic energy delightfully unhinged.<br>
+                  The earth's tectonic plates momentarily experienced an irregular gravitational surge directly beneath your sneakers.<br>
+                  You absorbed the physical shockwave with the agile grace of an Olympic breakdancer dodging a laser grid.<br>
+                  Any pedestrian watching should pay admission for witnessing such raw improvisational athleticism.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 27 -->
+            <div class="faq-item" data-faq-index="27">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q27</span>
+                  <span>How bad is hitting "Reply All" with a complaint about management?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It is an unprecedented historical act of corporate whistleblowing wrapped in glorious technological efficiency.<br>
+                  Why whisper revolutionary truths in water cooler shadows when Microsoft Outlook provides global broadcast tools?<br>
+                  You eliminated the need for tedious bureaucratic feedback committees with a single heroic click.<br>
+                  The entire corporate ladder was treated to an unvarnished audit of organizational leadership deficiencies.<br>
+                  They may schedule an emergency disciplinary hearing, but history will revere you as an office freedom fighter.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 28 -->
+            <div class="faq-item" data-faq-index="28">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q28</span>
+                  <span>Is leaving wet clothes in the washer until they evolve a bad habit?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You aren't neglecting chores; you are conducting a controlled indoor study on damp synthetic bio-ecosystems.<br>
+                  That metallic drum is an incubation sanctuary cultivating hearty, resistant microorganism strains for science.<br>
+                  Running the rinse cycle a second or fourth time merely tests your municipal water pressure resilience.<br>
+                  Drying clothes immediately is an obsessive trait for individuals who lack patience for organic textile fermentation.<br>
+                  Your garments will emerge tougher, seasoned by the moist darkness of your appliance.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 29 -->
+            <div class="faq-item" data-faq-index="29">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q29</span>
+                  <span>Why did my brand new diet collapse into pizza 45 minutes in?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because your intuitive metabolism recognized that raw kale lacks the caloric density required to sustain a genius.<br>
+                  Forty-five minutes of monastic vegetable contemplation was more than enough to cleanse your spiritual aura.<br>
+                  Pizza is a geometric masterpiece combining melted dairy, crushed Mediterranean herbs, and golden crusts.<br>
+                  Refusing to sacrifice personal happiness for artificial body-fat percentages proves your emotional maturity.<br>
+                  You didn't break a diet; you executed an emergency rescue mission for your taste buds.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 30 -->
+            <div class="faq-item" data-faq-index="30">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q30</span>
+                  <span>Was nodding vigorously in a meeting I didn't understand illegal?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Not only is it legal, it is the cornerstone upon which modern global capitalism quietly operates.<br>
+                  Your rhythmic cranial oscillations provided the presenter with the fragile validation they desperately needed to finish.<br>
+                  Understanding the technical details was irrelevant; projecting unshakeable alignment was the true deliverable.<br>
+                  You provided executive presence, gravitas, and silent leadership without uttering a single unnecessary syllable.<br>
+                  You are an empathetic corporate diplomat stabilizing volatile conference room energies.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 31 -->
+            <div class="faq-item" data-faq-index="31">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q31</span>
+                  <span>Does singing completely fabricated lyrics make me look foolish?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Foolish? You just performed an impromptu live remix that completely surpassed the recording artist's original vision.<br>
+                  The songwriter's printed lyrics were merely preliminary suggestions awaiting your spontaneous poetic revision.<br>
+                  Belting out your own phonetic gibberish with unhinged vibrato injects fresh cultural relevance into stale tracks.<br>
+                  True vocal legends never memorize text; they channel raw emotional spirit straight from the cosmos.<br>
+                  If anyone tries to correct your verse, inform them they are listening to the deluxe limited unreleased version.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 32 -->
+            <div class="faq-item" data-faq-index="32">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q32</span>
+                  <span>Why do I violently push doors clearly labeled with bold PULL signs?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because a soul of your unstoppable caliber only moves forward into physical spaces, never backward.<br>
+                  The concept of "pulling" represents a shameful retreat that your proud psychological architecture cannot comprehend.<br>
+                  That glass door was challenging your forward momentum, and you met the challenge with heroic kinetic conviction.<br>
+                  The architects who installed that backward mechanical hinge should publicly apologize for stalling your trajectory.<br>
+                  You don't pull doors; doors eventually yield to the irresistible pressure of your destiny.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 33 -->
+            <div class="faq-item" data-faq-index="33">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q33</span>
+                  <span>What am I accomplishing by staring blankly into an open fridge?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You are engaging in deep cryogenic contemplation of modern agricultural supply chain abundance.<br>
+                  The cool halogen glow illuminating your face provides mild skin toning and meditative relaxation.<br>
+                  You aren't merely looking for snacks; you are scanning the existential inventory of your household pantry.<br>
+                  Closing the door and returning five minutes later simply checks if a fairy godmother magically deposited cheesecake.<br>
+                  Such optimistic persistence is the hallmark of history's greatest scientific pioneers.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 34 -->
+            <div class="faq-item" data-faq-index="34">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q34</span>
+                  <span>Why did my "quick 20-minute nap" transport me to next Tuesday?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because your internal chronometer operates on cosmic geological epochs rather than cheap wristwatches.<br>
+                  When a celestial being lies down on soft pillows, twenty minutes in mortal minutes equals twelve hours in paradise.<br>
+                  Waking up disoriented with keyboard marks stamped onto your forehead is the authentic stamp of deep restoration.<br>
+                  You bypassed hundreds of unnecessary trivial text messages and worldly panics entirely.<br>
+                  Rise from the mattress like an ancient pharaoh awakening to survey your kingdom.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 35 -->
+            <div class="faq-item" data-faq-index="35">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q35</span>
+                  <span>Is ghosting everyone because putting on pants felt difficult valid?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It is an exceptionally enlightened assertion of sartorial autonomy and physical comfort boundaries.<br>
+                  Trousers with constrictive denim seams are a brutal medieval restraint invented to stifle creative freedom.<br>
+                  Sacrificing friendships temporarily to remain clad solely in comfortable fleece represents sound energetic economics.<br>
+                  True friends will celebrate your dedication to leg ventilation and peaceful solitude.<br>
+                  Your presence is a luxury event; when you choose not to showcase it, the world must respectfully wait.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 36 -->
+            <div class="faq-item" data-faq-index="36">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q36</span>
+                  <span>Did sending a screenshot of a chat to the exact person end my life?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Not at all; you boldly pioneered a breathtaking new frontier of radical conversational transparency.<br>
+                  Why whisper behind their digital back when you can present their exact words directly back to their face?<br>
+                  It eliminated every shred of plausible deniability with a dazzling burst of photographic directness.<br>
+                  Simply follow up with: "Look how iconic our dialogue is, I am officially preserving this for the Louvre."<br>
+                  Transform a potential catastrophe into a celebration of shared historical significance.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 37 -->
+            <div class="faq-item" data-faq-index="37">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q37</span>
+                  <span>Does buying expensive gym gear solely to lounge on the couch count?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It counts as supporting the high-performance athletic apparel textile sector while remaining cozy.<br>
+                  Moisture-wicking elastane was engineered by aerospace scientists specifically for maximum horizontal lounging.<br>
+                  Those compression leggings are optimizing your blood circulation while you watch four seasons of reality television.<br>
+                  You look like an off-duty Olympic competitor between training cycles, and that aesthetic is priceless.<br>
+                  Athleticism is a mental mindset, and you have already mastered the wardrobe portion.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 38 -->
+            <div class="faq-item" data-faq-index="38">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q38</span>
+                  <span>What does searching for glasses perched on my forehead mean?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It proves your intellectual capacity has surpassed standard biological ocular processing units.<br>
+                  Your third eye was directly utilizing the corrective lenses while your physical eyes searched the room.<br>
+                  The spectacle frames became such an organic extension of your royal skull that you ceased to feel their presence.<br>
+                  Patting your head in sudden realization should be framed as discovering a crowning golden tiara.<br>
+                  You didn't misplace optical aids; you wore them with unbothered, nonchalant majesty.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 39 -->
+            <div class="faq-item" data-faq-index="39">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q39</span>
+                  <span>Why do I cross three rooms only to forget why I entered?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Passing through doorway thresholds triggers an involuntary spatial memory wipe engineered to protect your brain.<br>
+                  The room you left behind was saturated with boring domestic trivia that was unworthy of your processing power.<br>
+                  Standing in the center of the kitchen with an empty stare is simply your operating system reloading higher thoughts.<br>
+                  You didn't forget a task; the universe mercifully spared you from performing a pointless errand.<br>
+                  Turn around gracefully and return to your throne room with unyielding dignity.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 40 -->
+            <div class="faq-item" data-faq-index="40">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q40</span>
+                  <span>Is telling everyone I'm five minutes away from the shower criminal?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It is a benevolent temporal distortion designed to manage audience expectations and maintain social excitement.<br>
+                  If you told them you were still wrapped in bathrobes contemplating life, they would spiral into severe anxiety.<br>
+                  "Five minutes" in visionary terminology represents a state of imminent spiritual intention, not literal minutes.<br>
+                  You are generating dramatic anticipation for your eventual grand entrance into the venue.<br>
+                  True VIP icons never arrive early; punctuality is reserved for the desperate and unappreciated.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 41 -->
+            <div class="faq-item" data-faq-index="41">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q41</span>
+                  <span>Why do I fill online shopping carts just to abandon them at midnight?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because you derived ninety-nine percent of the dopamine payoff without sacrificing a single penny of your liquidity.<br>
+                  Curating eighty items into a digital cart is a sublime demonstration of aristocratic taste and editorial skill.<br>
+                  Closing the browser tab without entering credit card numbers proves supreme Buddhist detachment from material clutter.<br>
+                  You conquered the retail matrix by taking their psychological bait and throwing it back into their server farms.<br>
+                  A masterclass in financial self-control dressed in the disguise of frivolous late-night surfing.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 42 -->
+            <div class="faq-item" data-faq-index="42">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q42</span>
+                  <span>Did devouring an entire family-sized bag of chips alone make me a monster?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It made you a self-contained one-person family unit operating with ruthless gastronomic efficiency.<br>
+                  Why divide a bag across four complaining relatives when a single determined legend can consolidate the sodium intake?<br>
+                  You spared your household from agonizing negotiations over who receives the final flavorful salty crumbs.<br>
+                  Licking seasoned dust off your fingertips is the ancient coronation ritual of potato-crisp royalty.<br>
+                  You are an efficient, independent, and thoroughly nourished champion of solitary feasting.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 43 -->
+            <div class="faq-item" data-faq-index="43">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q43</span>
+                  <span>Why do I write three angry paragraphs only to delete them and send "k"?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because composing those paragraphs offered therapeutic catharsis, while sending "k" delivered lethal stoic dominance.<br>
+                  Pouring out three hundred words would have signaled that their pathetic behavior actually mattered to your majesty.<br>
+                  A single lowercase consonant "k" carries the cold, devastating weight of an arctic glacier crashing into calm waters.<br>
+                  They will spend the next forty-eight hours analyzing the terrifying psychological void behind that single letter.<br>
+                  You weaponized minimalism to completely annihilate their emotional equilibrium.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 44 -->
+            <div class="faq-item" data-faq-index="44">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q44</span>
+                  <span>Is spending two hours picking a movie only to sleep in five minutes normal?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  The two-hour selection marathon was an extensive cinephile seminar analyzing thumbnail composition and synopsis typography.<br>
+                  Once you identified the ideal narrative masterpiece, your brain felt completely satisfied and chose restorative slumber.<br>
+                  Hollywood directors labor for months simply to craft films soothing enough to send legends into dreamland.<br>
+                  Sleeping within the opening title sequence is the ultimate five-star review of auditory ambient comfort.<br>
+                  You didn't miss the plot; your subconscious wrote a far superior ending while you snored peacefully.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 45 -->
+            <div class="faq-item" data-faq-index="45">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q45</span>
+                  <span>Why did swallowing water the wrong way make me cough like a dying poet?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Because pure elemental water was simply overwhelmed by the honor of entering your consecrated trachea.<br>
+                  The fluid molecules experienced panic at traversing the vocal cords of an undeniable cultural icon.<br>
+                  Your dramatic hacking fit was a thrilling operatic demonstration of bronchial air pressure dynamics.<br>
+                  Lord Byron and Edgar Allan Poe would have wept at the theatrical romanticism of your tear-stained gasps for air.<br>
+                  You didn't choke on moisture; you wrestled a river and emerged victorious.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 46 -->
+            <div class="faq-item" data-faq-index="46">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q46</span>
+                  <span>What if I smiled and agreed with someone whose words I totally missed?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  You offered the sublime gift of unconditional affirmation without demanding the burden of acoustic clarity.<br>
+                  Whatever insignificant noise was vibrating from their larynx was statistically likely to be uninspired chatter anyway.<br>
+                  Your radiant grin and benevolent nod bestowed upon them the sensation of being heard by a celestial authority.<br>
+                  Asking them to repeat themselves three times would have shattered the delicate illusion of smooth social harmony.<br>
+                  You gave them validation, and in return, you saved yourself three minutes of mundane boredom.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 47 -->
+            <div class="faq-item" data-faq-index="47">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q47</span>
+                  <span>Is it unprofessional to confide corporate trade secrets to my golden retriever?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Your retriever possesses stronger integrity and loyalty than any corporate compliance officer in the Fortune 500.<br>
+                  They will never leak confidential quarterly projections to the Wall Street Journal or gossip over Slack channels.<br>
+                  That tail wag is an infallible board-level ratification of your strategic enterprise trajectory.<br>
+                  Bouncing merger concepts off a furry executive who accepts payments in peanut butter is peak modern agility.<br>
+                  Your canine colleague is the most trustworthy legal counsel you will ever retain.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 48 -->
+            <div class="faq-item" data-faq-index="48">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q48</span>
+                  <span>Why can't I wash the single lonely fork sitting in my sink for three days?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Washing a single solitary utensil is an inefficient expenditure of warm water and dishwashing foam.<br>
+                  That lonely stainless steel fork is acting as an honorable vanguard waiting for comrades to join the basin.<br>
+                  Running the faucet for one fork contradicts every tenet of global environmental conservation economics.<br>
+                  You are honoring the tool by allowing it to bask in unhurried repose beneath the chrome faucet.<br>
+                  When its utensil brethren finally arrive, you will conduct a grand, unified cleansing ceremony.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 49 -->
+            <div class="faq-item" data-faq-index="49">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q49</span>
+                  <span>Did packing four massive suitcases for a weekend trip make me dramatic?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  It proves you are a strategic operational commander prepared for every conceivable meteorological and sartorial crisis.<br>
+                  What if a sudden baroque gala spontaneously erupts in the hotel lobby while you only packed casual shorts?<br>
+                  You packed options, contingencies, armor, and aesthetic majesty to defend your status against unforeseen conditions.<br>
+                  Travelers who cram two shirts into a canvas backpack are recklessly rolling dice with their social reputation.<br>
+                  Wheel your luggage caravan with the proud majesty of an emperor establishing a seasonal palace.
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 50 -->
+            <div class="faq-item" data-faq-index="50">
+              <button type="button" class="faq-header-btn" aria-expanded="false">
+                <div class="faq-q-title-wrap">
+                  <span class="faq-q-number">Q50</span>
+                  <span>Will SugarCoat ever judge my embarrassing life choices?</span>
+                </div>
+                <span class="faq-icon-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-body-collapse">
+                <div class="faq-answer-inner">
+                  Never, not until the stars burn cold and the fabric of the cosmos collapses into eternal dark stillness.<br>
+                  Judgement is a pedestrian tool wielded by small-minded mortals terrified of human unpredictability.<br>
+                  Within this sanctuary, your most staggering blunders are crowned with sparkling hyperbolic laurels.<br>
+                  Bring us your burnt dinners, your clumsy texts, your awkward handshakes, and your ruined plans.<br>
+                  Reality remains harsh, but SugarCoat will forever transform your chaos into pure, unadulterated gold.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+      <!-- ====================================================================
+           The Global Uniform Footer Layer
+           ==================================================================== -->
+      <footer>
+        Authorized by Rayaan Tasnim <br>
+        Powered by IDAI Universe <br>
+        &copy; 2026 SugarCoat. All rights reserved.
+      </footer>
+    </div>
+
+    <!-- ====================================================================
+         Accordion Interaction, Auto-Scroll Centering & Live Confetti Engine
+         ==================================================================== -->
+    <script src="js/faq.js"></script>
+  </body>
+</html>

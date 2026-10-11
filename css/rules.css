@@ -1,0 +1,115 @@
+      /* ====================================================================
+         Rules & Regulations Mobile UI Architecture Overhaul
+         ==================================================================== */
+      @media (max-width: 768px) {
+        /* Strict 90% Global Structural Boundaries */
+        .container,
+        .redline-vault-block,
+        .glass-card,
+        .responsive-cards-grid,
+        .responsive-split-row,
+        .section-header,
+        .hero-section {
+          width: 90% !important;
+          max-width: 90% !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          box-sizing: border-box !important;
+        }
+
+        /* Severe Safety Red-Lines Container Fixes */
+        .redline-vault-block {
+          padding: 24px 16px !important;
+          border: 2px solid #EF4444 !important;
+          border-radius: 16px !important;
+          margin: 24px auto !important;
+          box-shadow: 0 0 25px rgba(239, 68, 68, 0.2), inset 0 0 15px rgba(239, 68, 68, 0.05) !important;
+          background: rgba(239, 68, 68, 0.03) !important;
+        }
+
+        /* The Red Bounding Box Transformation: Single vertical path */
+        .responsive-cards-grid {
+          grid-template-columns: 1fr !important;
+          gap: 16px !important;
+        }
+
+        .redline-card {
+          width: 100% !important;
+          box-sizing: border-box !important;
+          padding: 1.25rem 1rem !important;
+        }
+
+        /* AI Workflow & Token Matrix Component Fluidity: Vertical stack */
+        .responsive-split-row {
+          grid-template-columns: 1fr !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 20px !important;
+        }
+
+        /* Fluid Image Rescaling on all graphic assets: 200px height */
+        #ai-workflow img,
+        #safety-red-lines img,
+        #data-jurisdiction img,
+        .hero-section img {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: 200px !important;
+          object-fit: cover !important;
+          border-radius: 12px !important;
+        }
+
+        /* Relaxed inner padding and typography hierarchy */
+        .glass-card {
+          padding: 1.5rem 1.15rem !important;
+          border-radius: 14px !important;
+        }
+
+        .hero-title {
+          font-size: clamp(2rem, 7.5vw, 2.75rem) !important;
+          line-height: 1.25 !important;
+          padding-bottom: 6px !important;
+        }
+
+        .hero-slogan {
+          font-size: 0.98rem !important;
+          line-height: 1.55 !important;
+          margin-bottom: 1.5rem !important;
+        }
+
+        .section-title {
+          font-size: clamp(1.6rem, 6vw, 2.1rem) !important;
+          line-height: 1.25 !important;
+          padding-bottom: 6px !important;
+        }
+
+        .section-subtitle {
+          font-size: 0.95rem !important;
+          line-height: 1.6 !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container,
+        .redline-vault-block,
+        .glass-card,
+        .responsive-cards-grid,
+        .responsive-split-row {
+          width: 90% !important;
+          max-width: 90% !important;
+        }
+
+        .redline-vault-block {
+          padding: 20px 14px !important;
+        }
+
+        .hero-title {
+          font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+        }
+
+        .btn-primary,
+        .btn-secondary-action {
+          width: 100% !important;
+          justify-content: center !important;
+        }
+      }

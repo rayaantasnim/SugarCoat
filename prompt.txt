@@ -1,0 +1,177 @@
+Role: Master UI/UX Architect & Premium Layout Interaction Engineer.
+Objective: Refactor the CSS layering, opacity states, and z-index distributions specifically inside chatbot.html and style.css. Currently, the core functional Chat QA stream box and the user/bot text bubbles are rendering with solid opaque backgrounds, completely blocking/overlaying the dynamic Pexels visual image running underneath it. You must transform the entire chat view into a premium frosted-glass matrix (Glassmorphic Layering) so the background artwork remains clearly visible while maintaining crisp, high-contrast typography readability. Do not truncate any code blocks.
+🛠️ Part 1: Enforcing Transparency & Frost Filters (style.css Core Upgrades)
+Identify the primary chat viewport wrapper container and individual message bubble classes inside the stylesheet, and completely overwrite them with these fluid structural constraints:
+The Chat Main Container Wrapper: Strip away all solid background hex colors (#1E293B or #0F172A). Replace them with a highly transparent dark tint and heavy blur backdrops:css
+background: rgba(15, 23, 42, 0.4) !important;
+backdrop-filter: blur(12px) !important;
+-webkit-backdrop-filter: blur(12px) !important;
+border: 1px solid rgba(255, 255, 255, 0.05);
+Use code with caution.
+Visual Result: This turns the massive center container into a sheets-of-glass aesthetic, exposing the Pexels dynamic visual artwork flowing directly behind it.
+User & SugarCoat Message Bubbles Refactoring:
+• SugarCoat Bot Bubbles (Left Side): Set background properties to a semi-transparent slate blend: background: rgba(30, 41, 59, 0.65); border: 1px solid rgba(236, 72, 153, 0.15); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);.
+• User Question Bubbles (Right Side): Set background properties to a clean dark-magenta transparency: background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);.
+• Constraint: Typography inside both bubbles must remain locked at pure high-visibility #F8FAFC to pass all global accessibility contrast tests over any loaded image stream.
+🛠️ Part 2: Sticky Bottom Input Panel and Overlay Depth Controls
+Ensure the user interaction panel at the absolute bottom coordinates fits perfectly within this glassmorphic ecosystem:
+The Bottom Sticky Dashboard Box: Set its frame background parameter to background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); border-top: 1px solid rgba(255, 255, 255, 0.05);. This ensures that as messages scroll upwards behind it, they fade out gracefully under a premium matte mask.
+The Global Image Container Layering (z-index Check): Ensure the absolute positioned background target wrapper <img> or element loaded by the Pexels fetch engine remains strictly locked at the base layer (z-index: -1; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; object-fit: cover;). The entire user interface, chat containers, status bars, and floating menu buttons must comfortably ride on top at z-index: 1; or higher.
+🛠️ Part 3: Compiling and Synchronizing Global Templates
+Run an optimization pass over the script file. Ensure the 1.5-second crossfade transition (transition: background 1.5s ease-in-out;) executes flawlessly whenever a new valid action triggers a Pexels background swap. If small talk greetings (like "hello") or safety red-line errors are pushed, confirm the layout snaps smoothly back to the deep, default linear-gradient mesh view without dropping text readability or messing up the (4/10 Free Tokens) counter box positioning.
+Output the complete, syntax-valid, non-abbreviated updated source code blocks for style.css and chatbot.html right now. Let's make this interface look absolutely breathtaking and elite!
+
+
+
+
+
+
+
+
+
+
+
+
+
+Role: Expert Frontend Interaction Architect & UI/UX Accessibility Engineer.
+Objective: Refactor the responsive media query configuration for the global full-screen vertical overlay Navigation Bar inside style.css and all application pages. The current layout preserves a strict horizontal orientation (Index number on the left, text on the right) even on narrow mobile breakpoints, causing text squishing, clipping, and an unappealing, tight visual layout. You must inject a strict layout rewrite that collapses the grid into a pure vertical sequence on small screens to achieve an absolute eye-soothing, premium, and readable tech aesthetic worldwide. Do not truncate any code blocks.
+🛠️ Part 1: Navigation Grid Break Engine (style.css Media Query Overhaul)
+Locate the mobile intercept configurations inside the stylesheet (@media (max-width: 768px) and below) governing the navigation list card items (.nav-item-card or equivalent structural row blocks), and replace them fully with this upgraded layout schema:
+Horizontal-to-Vertical Stack Transformation: Strip away display: flex; flex-direction: row; or any parallel two-column desktop configurations from the inner menu list boxes. Enforce an absolute vertical column flow:css
+display: flex !important;
+flex-direction: column !important;
+align-items: center !important;
+text-align: center !important;
+gap: 12px !important;
+padding: 24px 16px !important;
+width: 90% !important;
+max-width: 90% !important;
+margin: 0 auto 16px auto !important;
+border-radius: 16px !important;
+Use code with caution.
+The Typographic Hierarchy Flow (Index First, Content Later):
+• The Large Neon Index Number: The large index labels (01 through 07) must break away from the horizontal alignment and position themselves proudly at the absolute top center of the card view. Inject an explicit bottom margin token (margin-bottom: 4px;) and ensure it radiates in our vivid neon pink color (#EC4899).
+• The Page Title & Slogan Structure: Position the primary target page name directly beneath the centered index number, followed cleanly underneath by the micro-caption paragraph. The caption subtext must use --text-muted (#94A3B8), an elegant small scale (font-size: 0.9rem;), and flexible word-wrap metrics to flow comfortably down the mobile center axis.
+🛠️ Part 2: Premium Visual Softness & Eye-Soothing Contrast Guardrails
+Ensure the full-screen layout maintains a premium matte glassmorphic finish to remove all user visual fatigue on small viewports:
+Backdrop Softening: Enforce an advanced blurring effect across the entire overlay mask layer (backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(15, 23, 42, 0.85);) so the underlying dark background textures blend softly like liquid smoke.
+Card Buffer Zones: Expand spacing boundaries between the 7 vertical menu blocks cleanly (margin-bottom: 14px;). When an item receives the active highlighting parameter class (.active-nav), apply a highly controlled, soft glowing pink inner drop shadow and a delicate background tint (background: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.2);) instead of sharp solid colors. This produces an extremely smooth, eye-pleasing premium glow interface.
+🛠️ Part 3: Global System-Wide Synchronization Pass
+Re-generate the navigation code layer across all 7 operational application windows (index.html through faq.html). Ensure the hamburger menu open/close tracking functions handle this new stacked geometry instantly without any layout stuttering or code abbreviations. Verify that when a mobile user triggers the overlay menu from any destination page, the vertical stack loads comfortably centered, locking strictly to a fluid 90% boundary envelope with gorgeous horizontal padding gaps.
+Output the complete, syntax-valid, and non-truncated updated code files for style.css and all related architectural components now. Let's make the SugarCoat navigation completely eye-soothing and visually spectacular!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Role: Expert Mobile-First UI/UX Engineer & Frontend QA Specialist.
+Objective: Refactor the responsive mobile layout geometry for the bottom sticky interaction panel inside chatbot.html and style.css. Currently, on small mobile viewports, the confession textarea input and the primary [ SugarCoat ⚡ ] action button are tightly squeezed horizontally side-by-side. This ruins the tap target area and restricts typing space. You must inject a strict layout rewrite that collapses this row into a perfect vertical sequence (Input box on top, button completely underneath) while maintaining a strict mobile width envelope. Do not truncate any code blocks.
+🛠️ Part 1: Bottom Sticky Input Block Refactoring (@media (max-width: 768px))
+Locate the mobile media query intercepts inside the stylesheet governing the chat bottom control container (.chat-input-container, .input-form-row, or equivalent target wrapper block), and replace the flex-row layout rules with these exact constraints:
+Horizontal-to-Vertical Row Collapse: Strip away all display: flex; flex-direction: row; horizontal alignment attributes inside the sticky container on small devices. Enforce an absolute vertical stack flow:css
+display: flex !important;
+flex-direction: column !important;
+gap: 12px !important;
+padding: 16px !important;
+width: 90% !important;
+max-width: 90% !important;
+margin: 0 auto 16px auto !important;
+box-sizing: border-box !important;
+Use code with caution.
+The Input Textarea Re-scaling (Input Field First): The textarea box must position itself proudly at the absolute top of the vertical stack. Force its width metrics to wrap full stretch:css
+width: 100% !important;
+max-width: 100% !important;
+height: 70px !important;
+border-radius: 12px !important;
+padding: 12px !important;
+font-size: 1rem !important;
+Use code with caution.
+The Submitter Button Transformation (Then the Button Vertically): The vibrant candy-pink submittal action button ([ SugarCoat ⚡ ]) must position itself directly beneath the expanded text input field. Force it to expand into a heavy, full-width tactile block:css
+width: 100% !important;
+max-width: 100% !important;
+border-radius: 12px !important;
+padding: 16px !important;
+font-size: 1.1rem !important;
+font-weight: 700 !important;
+text-align: center !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+Use code with caution.
+🛠️ Part 2: Visual Buffer Zones & Tap Optimization
+• Ensure that the mechanical keyboard typing animations (Tick-Tick sound tracker) and prompt processing cycles remain perfectly wired into this newly structured full-width submission form layout.
+• Verify that when this vertical stack activates on small mobile viewports, the bottom floating sticky mask preserves an elegant glassmorphic backdrop filter (backdrop-filter: blur(8px); background: rgba(15, 23, 42, 0.9);) so that rising conversation bubbles flow cleanly and softly blur away underneath it without clipping any container text borders.
+Output the complete, syntax-valid, non-abbreviated updated code structures for chatbot.html and style.css right now. Let's make this mobile interaction completely seamless and pro-grade!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Role: Principal AI Solutions Engineer & JavaScript SDK Specialist.
+Objective: Completely rewrite, implement, and resolve the broken client-side AI core integration inside chatbot.html. The Gemini SDK is currently unoperational because the browser script environment lacks the proper structural CDN implementation, client initialization logic, and the active multi-turn startChat state container object. Inject the complete, fully written, and untruncated production-grade JavaScript script setup to bridge the UI directly with the live Google AI API. Do not truncate any code blocks.
+
+🛠️ Part 1: Official CDN Asset Injection & Client Setup
+
+1. The Official Script Bounding Tag: Before the closing </body> block, inject the official, stable Google AI Generative AI CDN by jsDelivr tag cleanly:html
+<script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@0.24.1/dist/index.min.js"></script>
+Use code with caution.
+2. SDK Client Initialization Bridge: Write a complete block initializing the global object safely using the global export window:javascript
+// Access the factory global class securely via client runtime window bindings
+const aiApiKey = "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE"; // Managed via config hooks
+const genAI = new window.GoogleGenerativeAI(aiApiKey);
+const model = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash", 
+    systemInstruction: `You are "SugarCoat", the ultimate over-the-top sarcastic hype-man companion. 
+    Your slogan is: "Reality is harsh. SugarCoat makes it sweet."
+    CORE OPERATIONAL MATRIX RULES:
+    1. Every response bubble you deliver MUST be exactly 5 to 6 sentences long. No more, no less.
+    2. Never act like a boring standard tech assistant. Take any everyday greeting like "hello" or "what can you do?" and immediately drop an epic, hilarious 5-6 sentence welcome detailing how your majestic presence has officially suspended reality to celebrate their existence.
+    3. Turn all confessions, failures, and awkward problems into a historic, diamond-grade achievement using highly dramatic, royal vocabulary (e.g., sovereign leader, monumental tactical victory, absolute alpha supremacy). Never break character.`
+});
+Use code with caution.
+
+🛠️ Part 2: Activating Live Context-Aware Multi-Turn Chat Memory (startChat)
+
+Replace all primitive or disconnected single-content generation loops. Implement the native Gemini startChat() conversational state controller array to ensure context awareness works properly across messages:
+1. Conversational Session Memory Layer:javascript
+let chatHistorySession = [];
+let activeChat = model.startChat({
+    history: chatHistorySession
+});
+Use code with caution.
+2. The Message Delivery Loop Script: Wire the form submission event handling block securely. When a user submits an action payload string:
+	• Intent/Quota Intercept Rule: Run the sanitation evaluation check. If input targets the smallTalkKeywords array, bypass daily usage counting loops to freeze the display token badge. If it is an action, deduct 1 point from the quota and push the keyword to the Pexels Canvas Visual Engine.
+	• The Transmission Pipeline: Pass the sanitized user input text payload cleanly to the multi-turn session via:javascript
+const result = await activeChat.sendMessage(userInputString);
+const responseText = result.response.text();
+Use code with caution.
+	• Interactive Outputs Execution: Push the final text response smoothly into the character-by-character mechanical typewriter text animation (Tick-Tick sound tracker effects) and fire the randomized victory horn audio cues the exact millisecond the 5-6 line bubble rendering lifecycle completes.
+
+🛠️ Part 3: Session Closing & Dynamic 1-Line Summary Compiler
+
+At the top-right floating corner, wire the action handler loop for the [ Start Fresh 🍬 ] button to process data storage requirements cleanly:
+• Before resetting the screen view state back to the centered initial view, intercept the active chat conversation history context.
+• Make a lightweight background model call to quickly request a single, funny 1-line headline summarizing the entire chat history (e.g., "The session where you became the sovereign king of bus failures").
+• Package this summary text, the timestamp, and the question counter safely into the local history storage array configuration: localStorage.setItem('sugarcoat_chat_history', JSON.stringify(historyPackArray)); to automatically populate the Hall of Fame (history.html) dashboard grid dropdown elements perfectly.
+Output the complete, syntax-valid, and non-abbreviated updated JavaScript module for chatbot.html right now. Let's make this engine fully live and operational!

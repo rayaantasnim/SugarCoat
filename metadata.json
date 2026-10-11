@@ -1,0 +1,6 @@
+{
+  "name": "SugarCoat",
+  "description": "Reality is harsh. SugarCoat makes it sweet. Ultra-premium sarcastic AI companion that turns your worst days and awkward moments into legendary wins.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

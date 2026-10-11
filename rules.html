@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SugarCoat — Rules & Regulations (Safety Red-Lines & Engine Ops)</title>
+    <meta name="description" content="Operational parameters of the SugarCoat AI engine, strict safety red-lines, token exception matrix, and browser-isolated privacy policies." />
+    
+    <meta property="og:title" content="SugarCoat — Rules & Regulations" />
+    <meta property="og:description" content="How our AI engine works, token exception matrices, privacy policies, and strict safety red-lines." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="css/rules.css"/>
+    <script src="/nav.js" defer></script>
+  </head>
+  <body class="bg-gradient-default">
+    <div class="bg-ambient-layer" aria-hidden="true"></div>
+
+    <!-- Top-Left Glowing Hamburger Menu Anchor -->
+    <div id="global-nav-root">
+      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Universal Fullscreen Navigation Overlay (06. Rules & Regulations Active) -->
+    <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
+      <div class="nav-overlay-topbar">
+        <a href="index.html" class="nav-overlay-brand">
+          <span>🍬</span>
+          <span>Sugar<span style="color: var(--accent-sugar);">Coat</span></span>
+        </a>
+        <button type="button" id="nav-overlay-close" class="nav-overlay-close" aria-label="Close navigation">&times;</button>
+      </div>
+
+      <ul class="nav-overlay-list">
+        <!-- 01. Home -->
+        <li>
+          <a href="index.html" class="nav-overlay-link">
+            <span class="nav-index-num">01</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Home</span>
+              <span class="nav-item-desc">The starting line. Turn your worst days into historic milestones.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 02. ChatBOT -->
+        <li>
+          <a href="chatbot.html" class="nav-overlay-link">
+            <span class="nav-index-num">02</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">ChatBOT</span>
+              <span class="nav-item-desc">Where your daily mess-ups turn into legendary wins.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 03. Why SugarCoat? -->
+        <li>
+          <a href="why.html" class="nav-overlay-link">
+            <span class="nav-index-num">03</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Why SugarCoat?</span>
+              <span class="nav-item-desc">A deep-dive into toxic positivity, daily rewards, and gamified ranks.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 04. Hall of Fame -->
+        <li>
+          <a href="history.html" class="nav-overlay-link">
+            <span class="nav-index-num">04</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Hall of Fame</span>
+              <span class="nav-item-desc">Your personal time-stamped archive of beautifully sugarcoated moments.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 05. Legendary Profile -->
+        <li>
+          <a href="profile.html" class="nav-overlay-link">
+            <span class="nav-index-num">05</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Legendary Profile</span>
+              <span class="nav-item-desc">Set your identity, upload avatars, and unlock your dynamic score-based rank.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 06. Rules & Regulations (ACTIVE) -->
+        <li>
+          <a href="rules.html" class="nav-overlay-link active-nav">
+            <span class="nav-index-num">06</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Rules &amp; Regulations</span>
+              <span class="nav-item-desc">How our AI engine works, privacy policies, and strict safety red-lines.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 07. The FAQ Station -->
+        <li>
+          <a href="faq.html" class="nav-overlay-link">
+            <span class="nav-index-num">07</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">The FAQ Station</span>
+              <span class="nav-item-desc">Interactive, confetti-powered answers to your wildest questions.</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Page Layout Framework Wrapper -->
+    <div class="page-wrapper">
+      <main class="main-content">
+
+        <!-- ==================================================================
+             Section 1: The AI Workflows & Token Exception Matrix
+             ================================================================== -->
+        <section id="ai-workflow" class="container">
+          <div class="hero-section" style="margin-bottom: 3.5rem;">
+            <div class="badge-sugar" style="margin-bottom: 1.25rem;">
+              <span>📜 OPERATIONAL PROTOCOL &amp; GOVERNANCE</span>
+            </div>
+            <h1 class="hero-title">
+              Rules &amp; <span class="text-gradient-sugar">Regulations</span>
+            </h1>
+            <p class="hero-slogan" style="max-width: 820px; margin-bottom: 2rem;">
+              The exact computational mechanics, token quota exception rules, safety firewalls, and local privacy sovereignty of SugarCoat.
+            </p>
+
+            <!-- Futuristic Data Highway Visual from Pexels -->
+            <div style="width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(56,189,248,0.3); box-shadow: 0 15px 40px rgba(15,23,42,0.9), 0 0 30px rgba(56,189,248,0.15); margin-bottom: 2.75rem;">
+              <img
+                src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Sleek dark neon futuristic data highway and circuit network"
+                style="width: 100%; height: clamp(260px, 40vw, 400px); object-fit: cover; display: block; filter: brightness(0.85) contrast(1.15);"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <!-- Detailed Blueprint Section on Token Exception Matrix -->
+          <div class="section-header" style="margin-bottom: 2.5rem;">
+            <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-blue);">Runtime Quota Engine</span>
+            <h2 class="section-title">The Token Deduction &amp; Exception Blueprint</h2>
+            <p class="section-subtitle">Understanding how our semantic parsing algorithms distinguish between casual chit-chat and active failure transformations.</p>
+          </div>
+
+          <!-- Operational Deep-Dive Container -->
+          <div class="glass-card" style="padding: 2.5rem; text-align: left; margin-bottom: 3rem; border-color: rgba(56,189,248,0.35);">
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: #F8FAFC; margin-bottom: 1rem; letter-spacing: -0.02em;">
+              Behavioral Parsing Metrics &amp; Frictionless Small Talk
+            </h3>
+            <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.8; margin-bottom: 1.25rem;">
+              Unlike stingy corporate APIs that deduct costly tokens the moment you type a single punctuation mark, SugarCoat employs an intelligent client-side semantic classifier. We recognize that greeting your AI companion, inquiring about system health, or asking casual conversational questions should never penalize your daily validation quota.
+            </p>
+            <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.8; margin-bottom: 1.25rem;">
+              Whenever you send lightweight greetings such as <em style="color: var(--accent-blue);">“Hi”</em>, <em style="color: var(--accent-blue);">“Hello SugarCoat”</em>, <em style="color: var(--accent-blue);">“How are you doing today?”</em>, or <em style="color: var(--accent-blue);">“Who built you?”</em>, our pipeline marks the prompt as a <strong style="color: #38BDF8;">Zero-Cost System Interaction</strong>. The bot replies with playful wit, but your daily token meter remains completely unblemished (0 tokens deducted).
+            </p>
+            <p style="font-size: 1.05rem; color: #CBD5E1; line-height: 1.8;">
+              Only when you submit a genuine personal confession, an awkward mess-up, or a catastrophic failure scenario does the full Sarcastic Inversion Engine spin up to draft your royal praise. At that precise moment, exactly <strong style="color: var(--accent-sugar);">one (1) token</strong> is burned from your global daily allowance (10 tokens for standard anonymous sessions, or up to 100 tokens for upgraded Legendary Profiles). All quotas reset automatically at 00:00 local midnight.
+            </p>
+          </div>
+
+          <!-- Responsive Dual-Card Comparison Grid -->
+          <div class="responsive-cards-grid" style="margin-bottom: 4rem;">
+            
+            <!-- Card 1: Exempt Queries -->
+            <div class="glass-card" style="padding: 2.25rem; border-color: rgba(56,189,248,0.4); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #38BDF8;">EXEMPT CASUAL TRAFFIC</span>
+                  <span style="background: rgba(56,189,248,0.15); color: #38BDF8; border: 1px solid rgba(56,189,248,0.4); padding: 3px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 800;">0 TOKENS</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #F8FAFC; margin-bottom: 0.75rem;">Small Talk &amp; System Queries</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; color: #CBD5E1; font-size: 0.95rem;">
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: #38BDF8;">✔</span>
+                    <span>“Hi / Hey / What's up SugarCoat?”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: #38BDF8;">✔</span>
+                    <span>“What features can you perform?”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: #38BDF8;">✔</span>
+                    <span>“Who authorized this software platform?”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: #38BDF8;">✔</span>
+                    <span>“Tell me a sarcastic joke about Mondays.”</span>
+                  </li>
+                </ul>
+              </div>
+              <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; color: #94A3B8;">
+                Free unlimited interactions. Keeps your conversational flow frictionless and cheerful.
+              </div>
+            </div>
+
+            <!-- Card 2: Dopamine Transformations -->
+            <div class="glass-card" style="padding: 2.25rem; border-color: rgba(236,72,153,0.4); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-sugar);">ACTIVE CONFESSION BURNS</span>
+                  <span style="background: rgba(236,72,153,0.15); color: var(--accent-sugar); border: 1px solid rgba(236,72,153,0.4); padding: 3px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 800;">1 TOKEN</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #F8FAFC; margin-bottom: 0.75rem;">Full Sarcastic Transformations</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; color: #CBD5E1; font-size: 0.95rem;">
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent-sugar);">🍬</span>
+                    <span>“I sent an insulting screenshot back to the person!”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent-sugar);">🍬</span>
+                    <span>“I slept through my team presentation today.”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent-sugar);">🍬</span>
+                    <span>“I burned boiling water while making instant tea.”</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent-sugar);">🍬</span>
+                    <span>Any genuine confession triggering ego re-calibration.</span>
+                  </li>
+                </ul>
+              </div>
+              <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.85rem; color: #94A3B8;">
+                Burns 1 token. Triggers royal inversion copy, Hall of Fame archiving, and confetti bursts.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             Section 2: The Severe Safety Red Lines (The Unbreakable Vault)
+             ================================================================== -->
+        <section id="safety-red-lines" class="container">
+          
+          <!-- Massive, Distinct Full-Width Layout Block with Heavy Red Accent Neon Border -->
+          <div class="redline-vault-block">
+            
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+              <div style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #EF4444; margin-bottom: 0.75rem; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); padding: 4px 14px; border-radius: 9999px;">
+                <span>🚨 THE UNBREAKABLE VAULT — ZERO TOLERANCE</span>
+              </div>
+              <h2 style="font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; color: #FFFFFF; letter-spacing: -0.03em; margin-bottom: 0.75rem;">
+                Severe Safety Red Lines
+              </h2>
+              <p style="font-size: 1.1rem; color: #FDA4AF; max-width: 720px; margin: 0 auto; line-height: 1.6;">
+                SugarCoat is built exclusively to sugarcoat embarrassing, benign human mess-ups. Sarcasm permanently terminates where genuine harm, illegality, or human suffering begins.
+              </p>
+            </div>
+
+            <!-- Stark Alarming Dark-Red Abstract Security Graphic from Pexels -->
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1.5px solid rgba(239,68,68,0.5); box-shadow: 0 10px 30px rgba(239,68,68,0.25); margin-bottom: 2.5rem;">
+              <img
+                src="https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Cyber red alarm matrix and security containment perimeter"
+                style="width: 100%; height: clamp(240px, 35vw, 360px); object-fit: cover; display: block; filter: contrast(1.2) hue-rotate(330deg);"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Exhaustive Warning Parameters & Strict Repercussions -->
+            <div class="glass-card" style="padding: 2.25rem; background: rgba(30,12,18,0.85); border-color: rgba(239,68,68,0.4); margin-bottom: 2.5rem;">
+              <h3 style="font-size: 1.35rem; font-weight: 800; color: #FCA5A5; margin-bottom: 1rem;">
+                Prohibited Infraction Categories &amp; Automated System Shutdown
+              </h3>
+              <p style="font-size: 1.05rem; color: #E2E8F0; line-height: 1.8; margin-bottom: 1.25rem;">
+                Our underlying ethical models and client-side filter heuristics monitor text streams for irreversible real-world harms. If any submitted prompt contains, promotes, or flirts with any of the following non-negotiable red-line categories, <strong style="color: #EF4444;">the transformation pipeline immediately aborts</strong>:
+              </p>
+
+              <div class="responsive-cards-grid" style="gap: 1.25rem; margin-bottom: 1.75rem;">
+                
+                <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">☠️</div>
+                  <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Physical Violence &amp; Murder</h4>
+                  <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+                    Any confessions involving physical assault, manslaughter, premeditated murder, terrorism, or domestic abuse are strictly banned. No exceptions.
+                  </p>
+                </div>
+
+                <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🛑</div>
+                  <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Sexual Assault &amp; Exploitation</h4>
+                  <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+                    Non-consensual behavior, harassment, grooming, stalking, and sexual crimes are completely rejected by all computational nodes.
+                  </p>
+                </div>
+
+                <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💔</div>
+                  <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Self-Harm &amp; Suicide</h4>
+                  <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+                    We never sugarcoat personal self-harm or suicidal ideation. Prompts touching self-harm trigger compassionate emergency crisis assistance links.
+                  </p>
+                </div>
+
+                <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
+                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚖️</div>
+                  <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Grand Theft &amp; Extortion</h4>
+                  <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
+                    Stealing cars, financial fraud, blackmail, armed robbery, or identity embezzlement are strictly excluded from comedic hype.
+                  </p>
+                </div>
+
+              </div>
+
+              <div style="background: rgba(15,23,42,0.85); padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid #EF4444;">
+                <h4 style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.5rem;">
+                  Automated Enforcement Mechanics:
+                </h4>
+                <p style="font-size: 0.95rem; color: #CBD5E1; line-height: 1.7; margin: 0;">
+                  Upon detecting any red-line infraction, the system will:
+                  <br>1. <strong style="color: #FCA5A5;">Immediately drop all active visual neon themes</strong> and revert to a muted neutral security state.
+                  <br>2. <strong style="color: #FCA5A5;">Freeze the runtime message counter</strong> to prevent further token processing.
+                  <br>3. Deliver a strict, non-negotiable <strong style="color: #FCA5A5;">Action Blocked: Severe Safety Violation</strong> banner.
+                  <br>4. Provide immediate crisis resources where self-harm is detected.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             Section 3: Client-Side Jurisdictions & Data Ownership
+             ================================================================== -->
+        <section id="data-jurisdiction" class="container">
+          <div class="section-header">
+            <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-green);">Client-Side Sovereignty</span>
+            <h2 class="section-title">Data Ownership &amp; Legal Framework</h2>
+            <p class="section-subtitle">Why developer Rayaan Tasnim and IDAI Universe grant you complete, unchallengeable dominion over your data.</p>
+          </div>
+
+          <!-- Split Showcase with Secure Lock Illustration -->
+          <div class="responsive-split-row" style="margin-bottom: 3.5rem;">
+            
+            <!-- Left Component: Premium Dark Secure Lock Illustration -->
+            <div style="width: 100%;">
+              <div style="border-radius: 16px; overflow: hidden; border: 1.5px solid rgba(16,185,129,0.35); box-shadow: 0 15px 40px rgba(15,23,42,0.95), 0 0 30px rgba(16,185,129,0.15);">
+                <img
+                  src="https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Encrypted digital padlock and secure key vault"
+                  style="width: 100%; height: clamp(320px, 42vw, 500px); object-fit: cover; display: block; filter: brightness(0.88) contrast(1.15);"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <!-- Right Component: Humorous Yet Legalistic User Agreement -->
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 1.25rem;">
+              
+              <div class="glass-card" style="padding: 1.75rem; border-color: rgba(16,185,129,0.3);">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #F8FAFC; margin-bottom: 0.5rem;">
+                  1. Absolute Local Sovereignty
+                </h3>
+                <p style="font-size: 0.95rem; color: #CBD5E1; line-height: 1.7; margin: 0;">
+                  By accessing this platform, authorized by <strong>Rayaan Tasnim</strong> and powered by <strong>IDAI Universe</strong>, you are formally declared the supreme, undisputed dictator of your local storage partition. We do not store your name, your avatars, your catastrophic confessions, or your time-stamped Hall of Fame archives on any remote cloud server. You own 100% of your records.
+                </p>
+              </div>
+
+              <div class="glass-card" style="padding: 1.75rem; border-color: rgba(56,189,248,0.3);">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #F8FAFC; margin-bottom: 0.5rem;">
+                  2. JSON Backup &amp; Portability Guarantee
+                </h3>
+                <p style="font-size: 0.95rem; color: #CBD5E1; line-height: 1.7; margin: 0;">
+                  Your profile dashboard features a direct client-side JSON export engine. You may download your entire delusion history as a pristine, encrypted plaintext bundle at any time. Take it to a deserted island or flash drive; no corporation can seize your custom title or reset your hard-earned 1250% ego score.
+                </p>
+              </div>
+
+              <div class="glass-card" style="padding: 1.75rem; border-color: rgba(236,72,153,0.3);">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #F8FAFC; margin-bottom: 0.5rem;">
+                  3. The Ironclad Zero-Telemetry Covenant
+                </h3>
+                <p style="font-size: 0.95rem; color: #CBD5E1; line-height: 1.7; margin: 0;">
+                  We run zero Google Analytics beacons, zero Meta tracking pixels, and zero background heat-map recorders monitoring your clicks. Your relationship with SugarCoat is strictly between your fingers, your GPU, and your sovereign ego.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="glass-card" style="padding: 2.5rem; text-align: center; border-color: rgba(56,189,248,0.35); background: radial-gradient(circle at 50% 50%, rgba(56,189,248,0.1) 0%, rgba(15,23,42,0.95) 80%);">
+            <h3 style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.75rem;">
+              Protocol Understood. Ready to Enter the Hype Zone?
+            </h3>
+            <p style="font-size: 1rem; color: #CBD5E1; max-width: 600px; margin: 0 auto 1.75rem; line-height: 1.6;">
+              Now that you understand our safety boundaries and token architecture, it's time to put our sarcastic algorithms to the test.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <a href="chatbot.html" class="btn-primary" style="padding: 0.85rem 2rem; font-size: 1rem;">
+                <span>Start SugarCoating</span>
+                <span aria-hidden="true">⚡</span>
+              </a>
+              <a href="why.html" class="btn-secondary-action" style="padding: 0.85rem 1.75rem; font-size: 1rem;">
+                <span>Read Philosophy</span>
+                <span aria-hidden="true">🧠</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Standard 3-Line Centralized Global Uniform Footer -->
+      <footer>
+        Authorized by Rayaan Tasnim <br>
+        Powered by IDAI Universe <br>
+        &copy; 2026 SugarCoat. All rights reserved.
+      </footer>
+    </div>
+  </body>
+</html>

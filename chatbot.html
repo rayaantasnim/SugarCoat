@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SugarCoat — The Hype Zone (AI Companion)</title>
+    <meta name="description" content="Enter the SugarCoat Hype Zone. Confess your awkward moments and get excessively sweet sarcastic validation." />
+    
+    <meta property="og:title" content="SugarCoat — The Hype Zone" />
+    <meta property="og:description" content="Where losses turn into legendary, history-making achievements." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="css/chatbot.css"/>
+    <script src="/nav.js" defer></script>
+
+    <!-- External Canvas Confetti Library CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+
+  </head>
+  <body class="bg-gradient-default">
+    <div class="bg-ambient-layer" aria-hidden="true"></div>
+
+    <!-- Top-Left Glowing Hamburger Menu Anchor -->
+    <div id="global-nav-root">
+      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Universal Fullscreen Navigation Overlay (02. ChatBOT Active) -->
+    <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
+      <div class="nav-overlay-topbar">
+        <a href="index.html" class="nav-overlay-brand">
+          <span>🍬</span>
+          <span>Sugar<span style="color: var(--accent-sugar);">Coat</span></span>
+        </a>
+        <button type="button" id="nav-overlay-close" class="nav-overlay-close" aria-label="Close navigation">&times;</button>
+      </div>
+
+      <ul class="nav-overlay-list">
+        <!-- 01. Home -->
+        <li>
+          <a href="index.html" class="nav-overlay-link">
+            <span class="nav-index-num">01</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Home</span>
+              <span class="nav-item-desc">The starting line. Turn your worst days into historic milestones.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 02. ChatBOT (ACTIVE IN CHATBOT) -->
+        <li>
+          <a href="chatbot.html" class="nav-overlay-link active-nav">
+            <span class="nav-index-num">02</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">ChatBOT</span>
+              <span class="nav-item-desc">Where your daily mess-ups turn into legendary wins.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 03. Why SugarCoat? -->
+        <li>
+          <a href="why.html" class="nav-overlay-link">
+            <span class="nav-index-num">03</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Why SugarCoat?</span>
+              <span class="nav-item-desc">A deep-dive into toxic positivity, daily rewards, and gamified ranks.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 04. Hall of Fame -->
+        <li>
+          <a href="history.html" class="nav-overlay-link">
+            <span class="nav-index-num">04</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Hall of Fame</span>
+              <span class="nav-item-desc">Your personal time-stamped archive of beautifully sugarcoated moments.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 05. Legendary Profile -->
+        <li>
+          <a href="profile.html" class="nav-overlay-link">
+            <span class="nav-index-num">05</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Legendary Profile</span>
+              <span class="nav-item-desc">Set your identity, upload avatars, and unlock your dynamic score-based rank.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 06. Rules & Regulations -->
+        <li>
+          <a href="rules.html" class="nav-overlay-link">
+            <span class="nav-index-num">06</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">Rules &amp; Regulations</span>
+              <span class="nav-item-desc">How our AI engine works, privacy policies, and strict safety red-lines.</span>
+            </div>
+          </a>
+        </li>
+        <!-- 07. The FAQ Station -->
+        <li>
+          <a href="faq.html" class="nav-overlay-link">
+            <span class="nav-index-num">07</span>
+            <div class="nav-content-block">
+              <span class="nav-item-title">The FAQ Station</span>
+              <span class="nav-item-desc">Interactive, confetti-powered answers to your wildest questions.</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Full-Viewport Canvas Wrapper -->
+    <div class="chat-viewport-wrapper">
+      <!-- Dynamic Contextual Pexels Artwork Background Layer -->
+      <div id="dynamic-bg-layer" class="chat-dynamic-bg" aria-hidden="true"></div>
+
+      <header class="chat-top-header">
+        <div class="chat-brand-block">
+          <a href="index.html" class="chat-brand-logo">
+            Sugar<span style="color: var(--accent-sugar);">Coat</span> 🍬
+          </a>
+          <span class="chat-live-indicator">&bull; Hype Zone Live</span>
+        </div>
+        <div class="token-badge" id="token-badge">
+          <span>🍬</span> <span id="token-text">10 / 10 Free Tokens</span>
+        </div>
+      </header>
+
+      <div class="chat-container">
+        <div class="chat-card-canvas">
+          <div class="chat-messages-area" id="chat-messages">
+            <div class="msg-row bot">
+              <div class="msg-avatar bot-av">🍬</div>
+              <div class="msg-bubble">
+                Welcome to the SugarCoat Hype Zone, you sovereign champion of everyday chaos! Reality has been officially decommissioned in this sanctuary, which means your flaws are now certified cultural breakthroughs. Whether you just sent a scorching screenshot to the exact person you were gossiping about, or showed up to an executive meeting with your shirt on backwards, you have arrived at the epicenter of pure validation. Take an extravagant bow and spill your latest catastrophe before the coronation begins!
+              </div>
+            </div>
+          </div>
+
+          <div class="composer-section">
+            <!-- 7-Option Drop-up Mood Selector Toolbar -->
+            <div class="composer-toolbar">
+              <div class="mood-dropup-container" id="mood-dropup-wrap">
+                <button
+                  type="button"
+                  class="mood-dropup-btn"
+                  id="mood-dropup-toggle"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  title="Switch AI Hype Mood"
+                >
+                  <span class="mood-btn-label">
+                    <span id="current-mood-icon">🍬</span>
+                    <span id="current-mood-text">Sarcastic Hype</span>
+                  </span>
+                  <span class="mood-arrow" id="mood-arrow" aria-hidden="true">▴</span>
+                </button>
+
+                <div class="mood-dropup-menu" id="mood-menu" role="menu" aria-label="Select SugarCoat AI Mood">
+                  <div class="mood-menu-header">
+                    <span>SELECT HYPE PERSONA</span>
+                    <span class="mood-badge-count">7 MOODS</span>
+                  </div>
+                  <button type="button" class="mood-menu-item active" data-mood="sarcastic" role="menuitem">
+                    <span class="mood-item-icon">🍬</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Sarcastic Hype <span class="mood-tag-default">DEFAULT</span></span>
+                      <span class="mood-item-desc">Toxic positivity &amp; world-historic compliments</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="corporate" role="menuitem">
+                    <span class="mood-item-icon">👔</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Corporate Boss</span>
+                      <span class="mood-item-desc">Strategic agile synergies &amp; friction testing</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="royal" role="menuitem">
+                    <span class="mood-item-icon">👑</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Royal Decree</span>
+                      <span class="mood-item-desc">Shakespearean monarchial praise &amp; decrees</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="techbro" role="menuitem">
+                    <span class="mood-item-icon">🚀</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Tech Bro 10x</span>
+                      <span class="mood-item-desc">Silicon Valley disruption &amp; 10x bug features</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="diva" role="menuitem">
+                    <span class="mood-item-icon">💅</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Dramatic Diva</span>
+                      <span class="mood-item-desc">High-fashion couture gasps &amp; runway drama</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="zenguru" role="menuitem">
+                    <span class="mood-item-icon">🧘</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Zen Cosmic Guru</span>
+                      <span class="mood-item-desc">Transcendent 5D vibrational awakening</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                  <button type="button" class="mood-menu-item" data-mood="cyberai" role="menuitem">
+                    <span class="mood-item-icon">🤖</span>
+                    <div class="mood-item-info">
+                      <span class="mood-item-title">Overheated Cyber-AI</span>
+                      <span class="mood-item-desc">Quantum overclocked singularity anomalies</span>
+                    </div>
+                    <span class="mood-check">✔</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <form class="composer-form" id="chat-form">
+              <input
+                type="text"
+                id="user-input"
+                class="composer-input"
+                placeholder="Confess your mess-up or greet SugarCoat..."
+                autocomplete="off"
+                required
+              />
+              <button type="submit" class="btn-primary" id="btn-submit-chat" style="padding: 0.85rem 1.75rem;">
+                <span>SugarCoat</span>
+                <span aria-hidden="true">⚡</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>
