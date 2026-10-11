@@ -3,9 +3,17 @@
 # SugarCoat 🍬
 ### *"Reality is harsh. SugarCoat makes it sweet."*
 
-[![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Gemini%20Flash-8B5CF6?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
-[![Architecture](https://img.shields.io/badge/Architecture-Serverless%20Client--Side-EC4899?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org)
-[![License](https://img.shields.io/badge/License-MIT-06B6D4?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://ai.google.dev">
+    <img src="https://img.shields.io/badge/Powered%20by-Gemini%20Flash-8B5CF6?style=for-the-badge&logo=google&logoColor=white" alt="Powered by Gemini"/>
+  </a>
+  <a href="https://developer.mozilla.org">
+    <img src="https://img.shields.io/badge/Architecture-Serverless%20Client--Side-EC4899?style=for-the-badge&logo=html5&logoColor=white" alt="Architecture"/>
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-06B6D4?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/>
+  </a>
+</p>
 
 </div>
 
