@@ -215,3 +215,31 @@ Execute a complete update pass over the entire application workspace. Paste the 
 6. 06. Rules & Regulations (rules.html)
 7. 07. The FAQ Station (faq.html)
 Ensure that the code is written seamlessly with no shortcuts or abbreviations, keeping all your previously optimized mobile responsively-balanced margins, startChat AI algorithms, and custom multi-line credit footer tags intact. Let's make the browser tab identity of SugarCoat completely flawless!
+
+
+
+
+
+Current issues and bugs found to enhance: 
+1. The Hero section of index.html need to be more rugged and using GSAP and Scroll Trigger, the sections of every page will appear smoothly when the screen reaches them. 
+2. The core AI Engine of the ChatBOT is not precise yet. It can detect the quotas precisely, pause quota cuts for ordinary ("hello, how are you?) massages and dynamically changes the background. The issue is it can not connect to the Gemini SDK API to generate the real sugercoated massages. Normal if-else is not enough, we want to sync with real API AI. 
+3. The section of "Core System Specifications" & "The Legendary Achievements Hall in index.html (Home page) is great but not precise according to the screens as it has too much border, gaps and margins looking very ugly for medium and smaller screens. We need to enhance it with low margins and enable vertical card system for smaller screens. 
+4. The section of "Severe Safety Red Lines" in Rules page looks great but need to have some images and need to refine the margins as it has too much right now looking ugly for all devices. 
+5. The section of "The Three Pillars of SugarCoat" in the Why page has the same issue - too much gap and margins between the cards. 
+6. The section of "The Hall of Ranks Master Directory" in Why page is grid which is fantastic. Right column has 5 cards (dedicated to each ranks) but the left column has only one image looking empty too much and ugly. We need to add more images there and enable vertical showcase system for smaller screens. 
+7. The section of "The Pseudo-Scientific Ego Benefit Matrix" in Why page is 1*4 grid. It need to be 2*2 grid which breaks into vertical for smaller screens. 
+8. Every grid view of the website has too much gap and margins including all page and section (like "The Code of Positivity Workflow" in Why page) which looks ugly. Enhance it, refine the margins and gaps and enable the vertical card display. 
+9. We need to add the "All-Caps" for showcasing wonder in the output massage like "WHAT!" "WOW!" "HOW!" "GREAT!" etc etc 
+10. As well, we need to add a speech synthesis system enabling the user to listen the output in ear. 
+It does not enable the user to speak, only to hear the output which shows in the screen chatbar. 
+As well, if an other input comes quickly before completing the running speech, the running speech will stop and turn to speak the new output immediately. 
+11. The visuals of the FAQ is really great but the question contents are not perfect. Some are precise but most are inappropriate like - 
+"What happens if I score 0 out of 100 on an exam?" or 
+"What if I accidentally slept for 14 hours straight on a Tuesday?"
+These are for the input field of the chatbot as sample deta like the Gemini. 
+12. If the input field is renewed (I mean a new chat) then the chatbox (input field) will have some options (demo) for the user to click to send immediately. like the Gemini. 
+13. Every output massage comes as dynamic, which sync with all the previous massages. 
+14. We need to add a favicon.ico file for the browser tab icons.
+15. The voice output must be dynamic - great joy, wonder, ordinary - all mixed. 
+16. The navigation bar (global) must be grid (2*3) display for bigger screen overlaying the full screen. For smaller devices it break into (1*6) vertical display with GSAP. 
+17. The horizontal scrollabble (Forward Infinite Scrolling Ticker) demo inputs of the home page must redirect to the ChatBOT page submitting the demo there cutting the quota 

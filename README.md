@@ -1,6 +1,6 @@
 <div align="center">
 
-# SugarCoat 🍬
+# SugarCoat AI 🍬
 ### *"Reality is harsh. SugarCoat makes it sweet."*
 
 <p align="center">
