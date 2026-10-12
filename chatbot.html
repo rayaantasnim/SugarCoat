@@ -15,26 +15,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Universal SugarCoat Premium Serverless Browser Tab Favicon Anchor -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍬</text></svg>">
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/chatbot.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/nav.js" defer></script>
 
     <!-- External Canvas Confetti Library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-
+    <script src="integrated-js/chatbot.js"></script>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
 
-    <!-- Top-Left Glowing Hamburger Menu Anchor -->
-    <div id="global-nav-root">
-      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+    <!-- ====================================================================
+         Universal Core Navigation Header
+         ==================================================================== -->
+    <header class="universal-header">
+      <div class="header-container">
+        <a href="index.html" class="nav-brand-badge">
+          <span>🍬SugarCoat</span>
+        </a>
+        <div id="global-nav-root">
+          <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- Universal Fullscreen Navigation Overlay (02. ChatBOT Active) -->
     <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
@@ -132,8 +145,20 @@
           </a>
           <span class="chat-live-indicator">&bull; Hype Zone Live</span>
         </div>
-        <div class="token-badge" id="token-badge">
-          <span>🍬</span> <span id="token-text">10 / 10 Free Tokens</span>
+        <div class="chat-header-controls" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div class="token-badge" id="token-badge">
+            <span>🍬</span> <span id="token-text">10 / 10 Free Tokens</span>
+          </div>
+          <button
+            type="button"
+            id="btn-start-fresh"
+            class="btn-secondary-action"
+            style="padding: 0.45rem 1rem; font-size: 0.85rem; border-color: rgba(236,72,153,0.4);"
+            title="Archive current conversation and start fresh"
+          >
+            <span>Start Fresh</span>
+            <span aria-hidden="true">🍬</span>
+          </button>
         </div>
       </header>
 
@@ -232,6 +257,25 @@
               </div>
             </div>
 
+            <!-- Interactive Demo Suggestions (Gemini-style Quick Confession Pills) -->
+            <div class="chat-demo-prompts" id="chat-demo-prompts">
+              <span class="demo-prompts-label">✨ Quick Confessions:</span>
+              <div class="demo-prompts-scroll">
+                <button type="button" class="demo-prompt-pill" data-prompt="What happens if I score 0 out of 100 on an exam?">
+                  <span>📝 0/100 on an exam</span>
+                </button>
+                <button type="button" class="demo-prompt-pill" data-prompt="What if I accidentally slept for 14 hours straight on a Tuesday?">
+                  <span>⏰ Slept 14 hours on Tuesday</span>
+                </button>
+                <button type="button" class="demo-prompt-pill" data-prompt="I replied all with 'sounds like a nightmare' to the CEO's company email">
+                  <span>📧 Replied All to CEO</span>
+                </button>
+                <button type="button" class="demo-prompt-pill" data-prompt="I wore two completely different shoes to an executive client meeting">
+                  <span>👞 Mismatched shoes in meeting</span>
+                </button>
+              </div>
+            </div>
+
             <form class="composer-form" id="chat-form">
               <input
                 type="text"
@@ -251,6 +295,8 @@
       </div>
     </div>
 
+    <!-- Official Google AI Generative AI Stable CDN Distribution -->
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@0.24.1/dist/index.min.js"></script>
     <script src="js/chatbot.js"></script>
   </body>
 </html>

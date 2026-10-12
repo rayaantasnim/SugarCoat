@@ -5,6 +5,7 @@
         width: 100vw;
         overflow: hidden;
         position: relative;
+        padding-top: 62px;
       }
       .chat-dynamic-bg {
         position: absolute;
@@ -22,7 +23,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1.25rem 2rem 1.25rem 5.5rem;
+        padding: 0.85rem 1.75rem;
         border-bottom: var(--glass-border);
         background: rgba(15, 23, 42, 0.75);
         backdrop-filter: blur(16px);
@@ -137,6 +138,64 @@
         0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
         40% { transform: scale(1.1); opacity: 1; }
       }
+      /* Quick Confession Demo Suggestion Pills */
+      .chat-demo-prompts {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: 0.65rem;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: thin;
+      }
+      .demo-prompts-label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--accent-sugar);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .demo-prompts-scroll {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 2px 0;
+        scrollbar-width: none;
+      }
+      .demo-prompts-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .demo-prompt-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.75rem;
+        background: rgba(30, 41, 59, 0.75);
+        border: 1px solid rgba(236, 72, 153, 0.3);
+        border-radius: var(--radius-pill);
+        color: #F8FAFC;
+        font-size: 0.78rem;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        flex-shrink: 0;
+      }
+      .demo-prompt-pill:hover {
+        background: rgba(236, 72, 153, 0.25);
+        border-color: var(--accent-sugar);
+        transform: translateY(-1px);
+        box-shadow: 0 0 12px rgba(236, 72, 153, 0.35);
+      }
+      .demo-prompt-pill:active {
+        transform: scale(0.96);
+      }
+
       .composer-section {
         padding: 1.25rem;
         border-top: 1px solid rgba(255, 255, 255, 0.08);

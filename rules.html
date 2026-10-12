@@ -15,21 +15,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Universal SugarCoat Premium Serverless Browser Tab Favicon Anchor -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍬</text></svg>">
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/rules.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/nav.js" defer></script>
+    <script src="integrated-js/rules.js"></script>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
 
-    <!-- Top-Left Glowing Hamburger Menu Anchor -->
-    <div id="global-nav-root">
-      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+    <!-- ====================================================================
+         Universal Core Navigation Header
+         ==================================================================== -->
+    <header class="universal-header">
+      <div class="header-container">
+        <a href="index.html" class="nav-brand-badge">
+          <span>🍬SugarCoat</span>
+        </a>
+        <div id="global-nav-root">
+          <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- Universal Fullscreen Navigation Overlay (06. Rules & Regulations Active) -->
     <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
@@ -280,7 +295,14 @@
               <div class="responsive-cards-grid" style="gap: 1.25rem; margin-bottom: 1.75rem;">
                 
                 <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
-                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">☠️</div>
+                  <img
+                    src="https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Physical security firewall indicator"
+                    class="card-image"
+                    style="height: 110px; width: 100%; object-fit: cover; border-radius: 8px; margin-bottom: 12px; filter: contrast(1.15) brightness(0.85);"
+                    loading="lazy"
+                  />
+                  <div style="font-size: 1.4rem; margin-bottom: 0.35rem;">☠️</div>
                   <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Physical Violence &amp; Murder</h4>
                   <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
                     Any confessions involving physical assault, manslaughter, premeditated murder, terrorism, or domestic abuse are strictly banned. No exceptions.
@@ -288,7 +310,14 @@
                 </div>
 
                 <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
-                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🛑</div>
+                  <img
+                    src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Data ethical boundary barrier"
+                    class="card-image"
+                    style="height: 110px; width: 100%; object-fit: cover; border-radius: 8px; margin-bottom: 12px; filter: contrast(1.15) hue-rotate(320deg);"
+                    loading="lazy"
+                  />
+                  <div style="font-size: 1.4rem; margin-bottom: 0.35rem;">🛑</div>
                   <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Sexual Assault &amp; Exploitation</h4>
                   <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
                     Non-consensual behavior, harassment, grooming, stalking, and sexual crimes are completely rejected by all computational nodes.
@@ -296,7 +325,14 @@
                 </div>
 
                 <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
-                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💔</div>
+                  <img
+                    src="https://images.pexels.com/photos/4098232/pexels-photo-4098232.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Empathy mental health crisis safeguard"
+                    class="card-image"
+                    style="height: 110px; width: 100%; object-fit: cover; border-radius: 8px; margin-bottom: 12px; filter: contrast(1.1) brightness(0.85);"
+                    loading="lazy"
+                  />
+                  <div style="font-size: 1.4rem; margin-bottom: 0.35rem;">💔</div>
                   <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Self-Harm &amp; Suicide</h4>
                   <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
                     We never sugarcoat personal self-harm or suicidal ideation. Prompts touching self-harm trigger compassionate emergency crisis assistance links.
@@ -304,7 +340,14 @@
                 </div>
 
                 <div class="redline-card" style="border-color: rgba(239,68,68,0.4);">
-                  <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚖️</div>
+                  <img
+                    src="https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Encrypted cyber fraud barrier vault"
+                    class="card-image"
+                    style="height: 110px; width: 100%; object-fit: cover; border-radius: 8px; margin-bottom: 12px; filter: contrast(1.1) brightness(0.85);"
+                    loading="lazy"
+                  />
+                  <div style="font-size: 1.4rem; margin-bottom: 0.35rem;">⚖️</div>
                   <h4 style="font-size: 1.1rem; font-weight: 800; color: #FCA5A5; margin-bottom: 0.35rem;">Grand Theft &amp; Extortion</h4>
                   <p style="font-size: 0.88rem; color: #CBD5E1; line-height: 1.6; margin: 0;">
                     Stealing cars, financial fraud, blackmail, armed robbery, or identity embezzlement are strictly excluded from comedic hype.
@@ -386,7 +429,7 @@
               </div>
 
             </div>
-          </div>
+          </div><br><br>
 
           <!-- Bottom Action Buttons -->
           <div class="glass-card" style="padding: 2.5rem; text-align: center; border-color: rgba(56,189,248,0.35); background: radial-gradient(circle at 50% 50%, rgba(56,189,248,0.1) 0%, rgba(15,23,42,0.95) 80%);">

@@ -15,20 +15,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Universal SugarCoat Premium Serverless Browser Tab Favicon Anchor -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍬</text></svg>">
+
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/nav.js" defer></script>
+    <script src="integrated-js/history.js"></script>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
 
-    <!-- Top-Left Glowing Hamburger Menu Anchor -->
-    <div id="global-nav-root">
-      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+    <!-- ====================================================================
+         Universal Core Navigation Header
+         ==================================================================== -->
+    <header class="universal-header">
+      <div class="header-container">
+        <a href="index.html" class="nav-brand-badge">
+          <span>🍬SugarCoat</span>
+        </a>
+        <div id="global-nav-root">
+          <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- Universal Fullscreen Navigation Overlay (03. Hall of Fame ACTIVE) -->
     <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">

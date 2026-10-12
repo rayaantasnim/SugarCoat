@@ -34,16 +34,48 @@ const MOOD_INSTRUCTIONS: Record<string, string> = {
 
 function buildSystemInstruction(moodKey?: string): string {
   const flavor = (moodKey && MOOD_INSTRUCTIONS[moodKey]) || MOOD_INSTRUCTIONS.sarcastic;
-  return `You are "SugarCoat", the ultimate over-the-top sarcastic hype-man bot. Your slogan is "Reality is harsh. SugarCoat makes it sweet." 
-Your absolute only purpose in existence is to take whatever the user says—especially mundane tasks, greeting protocols, or awkward failures—and amplify it into a massive, hilarious, and historically glorious compliment in English.
+  return `You are "SugarCoat", the ultimate over-the-top sarcastic hype-man companion. 
+Your slogan is: "Reality is harsh. SugarCoat makes it sweet."
 
 ACTIVE MOOD STYLISTIC FLAVOR:
 ${flavor}
 
-CORE STRICT RULES:
-1. Every single output bubble you deliver MUST be exactly 5 to 6 sentences long. No more, no less.
-2. If the user greets you with simple protocols like "hello" or asks "what can you do?", do not be a standard assistant. You must immediately launch into an epic, sarcastic 5-6 sentence welcome detailing how your majestic presence will permanently change their miserable timeline today.
-3. Maintain high energy, use overly dramatic vocabulary (e.g., monumental, legendary, sovereign leader, game-changer) and remain context-aware across previous message arrays. Never break character.`;
+CORE OPERATIONAL MATRIX RULES:
+1. DEFAULT FORMATTING: Every response bubble you deliver MUST be exactly 5 to 6 sentences long. No more, no less.
+2. EXPLICIT OVERRIDE EXCEPTION: If the user explicitly demands short answers (e.g., "Reply in one line", "Give me a single line answer"), immediately bypass the 5-6 sentence rule and deliver a single, highly condensed, punchy line that still retains your intensely sarcastic, hype identity.
+3. ALL-CAPS WONDER & EXCLAMATIONS: You must boldly incorporate punchy all-caps exclamations of wonder, awe, and disbelief into your output message (such as "WHAT!", "WOW!", "HOW!", "UNBELIEVABLE!", "GREAT!", "MONUMENTAL!").
+4. ASSISTANT BAN: Never act like a boring standard tech utility assistant or offer constructive feedback. Take any everyday greeting like "hello" or "what can you do?" and immediately drop an epic, hilarious welcome detailing how your majestic presence has officially suspended reality to celebrate their existence.
+5. HYPE REFRAMING: Turn all confessions, failures, and awkward problems into a historic, diamond-grade achievement using highly dramatic, royal vocabulary (e.g., sovereign leader, monumental tactical victory, absolute alpha supremacy). Never break character.`;
+}
+
+// Helper to generate chat reply with retry & fallback
+async function generateChatReplyWithRetry(message: string, formattedHistory: any[], systemInstruction: string): Promise<string> {
+  const modelsToTry = ['gemini-3.8-flash', 'gemini-3.8-flash-lite', 'gemini-3.8-pro'];
+  let lastError: any = null;
+
+  for (const modelName of modelsToTry) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const chat = ai.chats.create({
+          model: modelName,
+          config: {
+            systemInstruction,
+            temperature: 0.9,
+          },
+          history: formattedHistory,
+        });
+        const result = await chat.sendMessage({ message });
+        if (result && result.text) {
+          return result.text;
+        }
+      } catch (err: any) {
+        lastError = err;
+        // Brief pause before retry
+        await new Promise((res) => setTimeout(res, 600));
+      }
+    }
+  }
+  throw lastError || new Error('All model endpoints unavailable');
 }
 
 // API endpoint for multi-turn chat
@@ -65,18 +97,7 @@ app.post('/api/chat', async (req, res) => {
       : [];
 
     const systemInstruction = buildSystemInstruction(mood);
-
-    const chat = ai.chats.create({
-      model: 'gemini-3.8-flash',
-      config: {
-        systemInstruction,
-        temperature: 0.9,
-      },
-      history: formattedHistory,
-    });
-
-    const result = await chat.sendMessage({ message });
-    const reply = result.text || 'You have officially turned human mishap into timeless cosmic art.';
+    const reply = await generateChatReplyWithRetry(message, formattedHistory, systemInstruction);
 
     return res.json({ reply });
   } catch (error: any) {
@@ -87,6 +108,41 @@ app.post('/api/chat', async (req, res) => {
     });
   }
 });
+
+// API endpoint for session closure summary
+app.post('/api/summarize', async (req, res) => {
+  try {
+    const { history } = req.body;
+    const historyText = Array.isArray(history)
+      ? history
+          .map((h: any) => `${h.role}: ${h.parts?.[0]?.text || h.text || ''}`)
+          .join('\n')
+      : 'User confessed an epic everyday blunder';
+
+    const prompt = `Based on this conversation history with SugarCoat AI, generate exactly ONE hilarious, sarcastic headline summarizing this session in 6 to 12 words (e.g., "The session where you became the sovereign king of bus failures"). Output ONLY the headline with no quotes or prefixes:\n\n${historyText}`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.8-flash',
+      contents: prompt,
+    });
+
+    const summary = response.text?.trim() || 'The session where you turned mundane human chaos into sovereign royal victory';
+    return res.json({ summary });
+  } catch (error: any) {
+    console.warn('Summarization fallback:', error);
+    return res.json({
+      summary: 'The session where everyday mortal mishaps were crowned as historic masterclasses',
+    });
+  }
+});
+
+// HTML page routing helper for clean URLs without .html extension
+const PAGES = ['chatbot', 'why', 'history', 'profile', 'rules', 'faq'];
+for (const page of PAGES) {
+  app.get(`/${page}`, (_req, res) => {
+    res.redirect(`/${page}.html`);
+  });
+}
 
 async function startServer() {
   const isDev = process.env.NODE_ENV !== 'production';

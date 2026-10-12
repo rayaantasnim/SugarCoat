@@ -16,22 +16,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Universal SugarCoat Premium Serverless Browser Tab Favicon Anchor -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍬</text></svg>">
+
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/nav.js" defer></script>
+    <script src="integrated-js/index.js"></script>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
 
     <!-- ====================================================================
-         Global Nav Anchor: Top-Left Neon-Pink Glowing Hamburger Menu
+         Universal Core Navigation Header
          ==================================================================== -->
-    <div id="global-nav-root">
-      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Fullscreen Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+    <header class="universal-header">
+      <div class="header-container">
+        <a href="index.html" class="nav-brand-badge">
+          <span>🍬SugarCoat</span>
+        </a>
+        <div id="global-nav-root">
+          <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- ====================================================================
          Master 7-Page Fullscreen Navigation Overlay (01. Home ACTIVE)
@@ -123,7 +137,7 @@
       <main class="main-content">
 
         <!-- ==================================================================
-             Section 1: Hero & Interactive Mini-Box (The Cinematic Conversion Engine)
+             Section 1: Hero Real Estate Overhaul (Immersive Cyberpunk Motion Area)
              ================================================================== -->
         <section id="hero" class="container hero-section" style="padding-top: 0.5rem;">
           <div class="hero-zone">
@@ -145,43 +159,31 @@
                 Reality is harsh. SugarCoat makes it sweet.
               </p>
 
-              <!-- Centered frosted glass-card containing interactive mini-box form -->
-              <div id="mini-box-anchor" class="hero-mini-box-wrapper">
-                <div class="hero-mini-box">
-                  <form id="hero-mini-form" action="chatbot.html" method="GET">
-                    <textarea
-                      id="hero-messup-input"
-                      name="messup"
-                      class="mini-box-textarea"
-                      placeholder="Test us here... Type a mini mess-up!"
-                      rows="3"
-                      required
-                    ></textarea>
-
-                    <div class="mini-box-actions">
-                      <div class="mini-box-hints">
-                        <span>Try: </span>
-                        <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I accidentally replied-all to 400 people on Slack!')">Reply-All 💀</a>
-                        &bull;
-                        <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I burned boiling water while trying to make simple tea.')">Burned Water ☕</a>
-                        &bull;
-                        <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I took a 20-minute nap and woke up 14 hours later.')">14h Nap 😴</a>
-                      </div>
-
-                      <button type="submit" class="btn-secondary-action" id="btn-fast-sugar">
-                        <span>Fast SugarCoat</span>
-                        <span aria-hidden="true">⚡</span>
-                      </button>
-                    </div>
-                  </form>
+              <!-- High-Impact Cyberpunk Value Propositions -->
+              <div class="hero-cyber-badges">
+                <div class="hero-cyber-badge">
+                  <span>👑</span>
+                  <span>Awkward To Awesome</span>
+                </div>
+                <div class="hero-cyber-badge">
+                  <span>⚡</span>
+                  <span>100% Sarcastic Hype</span>
+                </div>
+                <div class="hero-cyber-badge">
+                  <span>🛡️</span>
+                  <span>Zero Reality Permitted</span>
                 </div>
               </div>
 
-              <!-- Below it, the large primary CTA button -->
-              <div>
+              <!-- High-Impact Conversion Action Group -->
+              <div class="hero-cta-group">
                 <a href="chatbot.html" class="btn-primary" id="hero-primary-cta">
                   <span>Enter the Hype Zone</span>
                   <span aria-hidden="true">🍬</span>
+                </a>
+                <a href="#fast-sugarcoat-station" class="btn-secondary-action hero-secondary-btn">
+                  <span>Fast SugarCoat</span>
+                  <span aria-hidden="true">⚡</span>
                 </a>
               </div>
             </div>
@@ -194,82 +196,125 @@
         <section aria-label="Live Wall of Shame Ticker" style="width: 100%; margin: 1rem 0 2rem;">
           <div class="marquee-wrapper">
             
-            <!-- Row 1: Forward Infinite Scrolling Ticker -->
+            <!-- Row 1: Forward Infinite Scrolling Ticker (Interactive Auto-Submit Links) -->
             <div class="marquee-track">
               <!-- Item 1 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20spent%206%20hours%20looking%20at%20cat%20memes%20instead%20of%20coding" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I spent 6 hours looking at cat memes instead of coding”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">A vital investment in feline psychology, Master! 🐈</span>
-              </div>
+              </a>
               <!-- Item 2 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20accidentally%20called%20my%20manager%20honey%20on%20Slack" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I accidentally called my manager 'honey' on Slack”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Absolute dominance! Establish your territory! 💼</span>
-              </div>
+              </a>
               <!-- Item 3 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20burnt%20my%20water%20while%20trying%20to%20make%20simple%20tea" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I burnt my water while trying to make simple tea”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Experimental high-temperature distillation! Gordon Ramsay who? ☕</span>
-              </div>
+              </a>
               <!-- Duplicated for smooth infinite loop -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20spent%206%20hours%20looking%20at%20cat%20memes%20instead%20of%20coding" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I spent 6 hours looking at cat memes instead of coding”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">A vital investment in feline psychology, Master! 🐈</span>
-              </div>
-              <div class="marquee-pill">
+              </a>
+              <a href="chatbot.html?messup=I%20accidentally%20called%20my%20manager%20honey%20on%20Slack" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I accidentally called my manager 'honey' on Slack”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Absolute dominance! Establish your territory! 💼</span>
-              </div>
-              <div class="marquee-pill">
+              </a>
+              <a href="chatbot.html?messup=I%20burnt%20my%20water%20while%20trying%20to%20make%20simple%20tea" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I burnt my water while trying to make simple tea”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Experimental high-temperature distillation! Gordon Ramsay who? ☕</span>
-              </div>
+              </a>
             </div>
 
-            <!-- Row 2: Reverse Infinite Scrolling Ticker -->
+            <!-- Row 2: Reverse Infinite Scrolling Ticker (Interactive Auto-Submit Links) -->
             <div class="marquee-track reverse">
               <!-- Item 1 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20went%20to%20the%20gym%20just%20to%20take%20a%20mirror%20selfie%20and%20left" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I went to the gym just to take a mirror selfie and left”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Maximum efficiency! Unlocking aesthetic points without muscle tears! 💪</span>
-              </div>
+              </a>
               <!-- Item 2 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20forgot%20my%20wallet%20on%20a%20high-profile%20romantic%20date" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I forgot my wallet on a high-profile romantic date”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Filtration strategy! Safely filtering out materialistic souls! 💎</span>
-              </div>
+              </a>
               <!-- Item 3 -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20woke%20up%20at%203%20PM%20and%20missed%20all%20structural%20group%20alarms" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I woke up at 3 PM and missed all structural group alarms”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Masterclass in deep cellular rejuvenation! 😴</span>
-              </div>
+              </a>
               <!-- Duplicated for smooth infinite loop -->
-              <div class="marquee-pill">
+              <a href="chatbot.html?messup=I%20went%20to%20the%20gym%20just%20to%20take%20a%20mirror%20selfie%20and%20left" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I went to the gym just to take a mirror selfie and left”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Maximum efficiency! Unlocking aesthetic points without muscle tears! 💪</span>
-              </div>
-              <div class="marquee-pill">
+              </a>
+              <a href="chatbot.html?messup=I%20forgot%20my%20wallet%20on%20a%20high-profile%20romantic%20date" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I forgot my wallet on a high-profile romantic date”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Filtration strategy! Safely filtering out materialistic souls! 💎</span>
-              </div>
-              <div class="marquee-pill">
+              </a>
+              <a href="chatbot.html?messup=I%20woke%20up%20at%203%20PM%20and%20missed%20all%20structural%20group%20alarms" class="marquee-pill" style="text-decoration: none; cursor: pointer;">
                 <span class="marquee-shame-text">“I woke up at 3 PM and missed all structural group alarms”</span>
                 <span class="marquee-arrow">➔</span>
                 <span class="marquee-sugar-text">Masterclass in deep cellular rejuvenation! 😴</span>
-              </div>
+              </a>
             </div>
 
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             Section 2: The Fast Confession Station (Relocated Downflow Module)
+             ================================================================== -->
+        <section id="fast-sugarcoat-station" class="container" style="margin: 1.5rem auto 2.5rem;">
+          <div class="section-header" style="margin-bottom: 1.5rem;">
+            <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-sugar);">Instant Dopamine Telemetry</span>
+            <h2 class="section-title">Confess Your Daily Mess-Up</h2>
+            <p class="section-subtitle">Take 5 seconds to test our sarcastic validation engine on whatever went wrong today.</p>
+          </div>
+
+          <!-- Centered frosted glass-card containing interactive mini-box form -->
+          <div id="mini-box-anchor" class="hero-mini-box-wrapper" style="margin: 0 auto; max-width: 780px;">
+            <div class="hero-mini-box">
+              <form id="hero-mini-form" action="chatbot.html" method="GET">
+                <textarea
+                  id="hero-messup-input"
+                  name="messup"
+                  class="mini-box-textarea"
+                  placeholder="Test us here... Type a mini mess-up!"
+                  rows="3"
+                  required
+                ></textarea>
+
+                <div class="mini-box-actions">
+                  <div class="mini-box-hints">
+                    <span>Try: </span>
+                    <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I accidentally replied-all to 400 people on Slack!')">Reply-All 💀</a>
+                    &bull;
+                    <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I burned boiling water while trying to make simple tea.')">Burned Water ☕</a>
+                    &bull;
+                    <a href="javascript:void(0)" style="color: var(--accent-blue); text-decoration: none;" onclick="setMiniPrompt('I took a 20-minute nap and woke up 14 hours later.')">14h Nap 😴</a>
+                  </div>
+
+                  <button type="submit" class="btn-secondary-action" id="btn-fast-sugar">
+                    <span>Fast SugarCoat</span>
+                    <span aria-hidden="true">⚡</span>
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </section>
 
@@ -552,9 +597,9 @@
                 class="spec-image"
                 loading="lazy"
               />
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <h3 style="font-size: 1.25rem; font-weight: 800; color: #FBBF24;">The Picasso of Bed Meditation</h3>
-                <span class="rank-badge-score rank-badge-god">Rarity: 0.3%</span>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.65rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #FBBF24; margin: 0; line-height: 1.3;">The Picasso of Bed Meditation</h3>
+                <span class="rank-badge-score rank-badge-god rarity-indicator-pill">Rarity: 0.3%</span>
               </div>
               <p class="spec-desc">
                 Granted to users sleeping past 14 hours. For those who transform simple laziness into high-art relaxation stacks and refuse to yield to morning alarms.
@@ -569,9 +614,9 @@
                 class="spec-image"
                 loading="lazy"
               />
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <h3 style="font-size: 1.25rem; font-weight: 800; color: #38BDF8;">The Archive Auditor Supreme</h3>
-                <span class="rank-badge-score rank-badge-ruler">Rarity: 1.2%</span>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.65rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #38BDF8; margin: 0; line-height: 1.3;">The Archive Auditor Supreme</h3>
+                <span class="rank-badge-score rank-badge-ruler rarity-indicator-pill">Rarity: 1.2%</span>
               </div>
               <p class="spec-desc">
                 Granted to users caught stalking their ex's deep history. Honoring historical researchers digging through ancient timelines with unmatched scholarly pride.
@@ -586,9 +631,9 @@
                 class="spec-image"
                 loading="lazy"
               />
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent-sugar);">The Boardroom Dominator</h3>
-                <span class="rank-badge-score rank-badge-sugar">Rarity: 2.1%</span>
+              <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.65rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--accent-sugar); margin: 0; line-height: 1.3;">The Boardroom Dominator</h3>
+                <span class="rank-badge-score rank-badge-sugar rarity-indicator-pill">Rarity: 2.1%</span>
               </div>
               <p class="spec-desc">
                 Granted to users wrecking high-stakes corporate alignment protocols. For corporate rebels marking their territory with total confidence and zero shame.

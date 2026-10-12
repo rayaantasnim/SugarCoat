@@ -15,20 +15,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+    <!-- Universal SugarCoat Premium Serverless Browser Tab Favicon Anchor -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🍬</text></svg>">
+
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/nav.js" defer></script>
+    <script src="integrated-js/why.js"></script>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
 
-    <!-- Top-Left Glowing Hamburger Menu Anchor -->
-    <div id="global-nav-root">
-      <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
+    <!-- ====================================================================
+         Universal Core Navigation Header
+         ==================================================================== -->
+    <header class="universal-header">
+      <div class="header-container">
+        <a href="index.html" class="nav-brand-badge">
+          <span>🍬SugarCoat</span>
+        </a>
+        <div id="global-nav-root">
+          <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
 
     <!-- Universal Fullscreen Navigation Overlay (03. Why SugarCoat Active) -->
     <div id="fullscreen-nav" class="fullscreen-nav-overlay" aria-label="Universal Site Navigation">
@@ -233,20 +249,65 @@
 
           <!-- Responsive Split Showcase Framework -->
           <div class="responsive-split-row" style="margin-bottom: 2rem;">
-            <!-- Left Component: Premium Dark Glowing Trophy Room Picture -->
-            <div style="width: 100%;">
-              <div style="position: relative; border-radius: 16px; overflow: hidden; border: 1.5px solid rgba(245,158,11,0.4); box-shadow: 0 15px 40px rgba(15,23,42,0.95), 0 0 35px rgba(245,158,11,0.2);">
-                <img
-                  src="https://images.pexels.com/photos/7005696/pexels-photo-7005696.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Glowing gold neon trophy showroom and victory relics"
-                  style="width: 100%; height: clamp(340px, 45vw, 560px); object-fit: cover; display: block; filter: brightness(0.9) contrast(1.1);"
-                  loading="lazy"
-                />
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, transparent 100%);">
-                  <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #FBBF24;">THE SANCTUARY OF EGO ASCENSION</span>
-                  <p style="font-size: 0.95rem; font-weight: 600; color: #F8FAFC; margin-top: 0.25rem;">
-                    “Your failures are not liabilities; they are ornamental medals pinned to your majestic mantle.”
-                  </p>
+            <!-- Left Component: 5-Tier Heraldry Gallery Column (Grid Equalizer) -->
+            <div class="ranks-gallery-column">
+              <!-- Tier 1 Heraldry Card -->
+              <div class="rank-heraldry-card" style="border-left: 4px solid #94A3B8;">
+                <div class="rank-heraldry-icon" style="background: rgba(148,163,184,0.15); border: 1px solid rgba(148,163,184,0.4); color: #94A3B8;">
+                  <span>🦥</span>
+                </div>
+                <div class="rank-heraldry-content">
+                  <span class="rank-heraldry-subtitle" style="color: #94A3B8;">Tier I &bull; Sloth Totem (0–20 pts)</span>
+                  <h4 class="rank-heraldry-title">Sanctuary of Horizontal Defiance</h4>
+                  <p style="font-size: 0.85rem; color: #94A3B8; margin: 0; line-height: 1.45;">Honoring mortals whose greatest daily triumph is conserving cellular kinetic energy.</p>
+                </div>
+              </div>
+
+              <!-- Tier 2 Heraldry Card -->
+              <div class="rank-heraldry-card" style="border-left: 4px solid #A855F7;">
+                <div class="rank-heraldry-icon" style="background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.4); color: #C084FC;">
+                  <span>🎭</span>
+                </div>
+                <div class="rank-heraldry-content">
+                  <span class="rank-heraldry-subtitle" style="color: #C084FC;">Tier II &bull; Alibi Sigil (21–40 pts)</span>
+                  <h4 class="rank-heraldry-title">Grand Order of Plausible Deniability</h4>
+                  <p style="font-size: 0.85rem; color: #94A3B8; margin: 0; line-height: 1.45;">Master architects constructing poetic alibis for unread messages and delayed meetings.</p>
+                </div>
+              </div>
+
+              <!-- Tier 3 Heraldry Card -->
+              <div class="rank-heraldry-card" style="border-left: 4px solid var(--accent-sugar);">
+                <div class="rank-heraldry-icon" style="background: rgba(236,72,153,0.15); border: 1px solid rgba(236,72,153,0.4); color: #EC4899;">
+                  <span>🏅</span>
+                </div>
+                <div class="rank-heraldry-content">
+                  <span class="rank-heraldry-subtitle" style="color: #EC4899;">Tier III &bull; Delusion Crown (41–60 pts)</span>
+                  <h4 class="rank-heraldry-title">Order of Gymnastic Justification</h4>
+                  <p style="font-size: 0.85rem; color: #94A3B8; margin: 0; line-height: 1.45;">Converting every awkward slip-up into an intentional demonstration of magnetic swagger.</p>
+                </div>
+              </div>
+
+              <!-- Tier 4 Heraldry Card -->
+              <div class="rank-heraldry-card" style="border-left: 4px solid #38BDF8;">
+                <div class="rank-heraldry-icon" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.4); color: #38BDF8;">
+                  <span>👑</span>
+                </div>
+                <div class="rank-heraldry-content">
+                  <span class="rank-heraldry-subtitle" style="color: #38BDF8;">Tier IV &bull; Sovereign Scepter (61–80 pts)</span>
+                  <h4 class="rank-heraldry-title">Dynasty of Absolute Inaction</h4>
+                  <p style="font-size: 0.85rem; color: #94A3B8; margin: 0; line-height: 1.45;">Nobility whose calendars are pristine deserts of blissfully cancelled obligations.</p>
+                </div>
+              </div>
+
+              <!-- Tier 5 Heraldry Card -->
+              <div class="rank-heraldry-card" style="border-left: 4px solid #FBBF24; background: radial-gradient(circle at 100% 50%, rgba(245,158,11,0.12) 0%, rgba(30,41,59,0.75) 100%);">
+                <div class="rank-heraldry-icon" style="background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.5); color: #FBBF24; box-shadow: 0 0 20px rgba(245,158,11,0.35);">
+                  <span>🌟</span>
+                </div>
+                <div class="rank-heraldry-content">
+                  <span class="rank-heraldry-subtitle" style="color: #FBBF24;">Tier V &bull; Supernova Crest (81–100 pts)</span>
+                  <h4 class="rank-heraldry-title">Apotheosis of Untouchable Hype</h4>
+                  <p style="font-size: 0.85rem; color: #E2E8F0; margin: 0; line-height: 1.45;">Cosmic entity so majestically self-assured that universal physics curtsies in awe.</p>
                 </div>
               </div>
             </div>
