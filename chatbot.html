@@ -39,6 +39,23 @@
         <a href="index.html" class="nav-brand-badge">
           <span>🍬SugarCoat</span>
         </a>
+
+        <!-- Unified Token Badge & Session Management Component -->
+        <div class="unified-token-fresh-component header-controls-group" id="unified-token-controls">
+          <div class="token-badge" id="token-badge">
+            <span>🍬</span> <span id="token-text">10 / 10 Free Tokens</span>
+          </div>
+          <button
+            type="button"
+            id="btn-start-fresh"
+            class="btn-secondary-action header-btn-fresh"
+            title="Archive current conversation and start fresh"
+          >
+            <span>Start Fresh</span>
+            <span aria-hidden="true">🍬</span>
+          </button>
+        </div>
+
         <div id="global-nav-root">
           <button type="button" id="hamburger-trigger" class="hamburger-btn" aria-label="Toggle Navigation Menu">
             <span class="hamburger-line"></span>
@@ -137,30 +154,6 @@
     <div class="chat-viewport-wrapper">
       <!-- Dynamic Contextual Pexels Artwork Background Layer -->
       <div id="dynamic-bg-layer" class="chat-dynamic-bg" aria-hidden="true"></div>
-
-      <header class="chat-top-header">
-        <div class="chat-brand-block">
-          <a href="index.html" class="chat-brand-logo">
-            Sugar<span style="color: var(--accent-sugar);">Coat</span> 🍬
-          </a>
-          <span class="chat-live-indicator">&bull; Hype Zone Live</span>
-        </div>
-        <div class="chat-header-controls" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-          <div class="token-badge" id="token-badge">
-            <span>🍬</span> <span id="token-text">10 / 10 Free Tokens</span>
-          </div>
-          <button
-            type="button"
-            id="btn-start-fresh"
-            class="btn-secondary-action"
-            style="padding: 0.45rem 1rem; font-size: 0.85rem; border-color: rgba(236,72,153,0.4);"
-            title="Archive current conversation and start fresh"
-          >
-            <span>Start Fresh</span>
-            <span aria-hidden="true">🍬</span>
-          </button>
-        </div>
-      </header>
 
       <div class="chat-container">
         <div class="chat-card-canvas">

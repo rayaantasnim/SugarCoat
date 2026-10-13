@@ -561,6 +561,42 @@ h3 {
   text-shadow: 0 0 16px var(--accent-neon-glow);
 }
 
+/* Unified Token & Session Control Component (Desktop Horizontal Top-Bar Row Alignment) */
+.unified-token-fresh-component,
+.header-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  margin-right: 0.85rem;
+}
+
+.header-btn-fresh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  border-color: rgba(236, 72, 153, 0.4);
+}
+
+.token-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-pill);
+  color: var(--accent-green);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
 #global-nav-root {
   display: flex;
   align-items: center;
@@ -1590,10 +1626,20 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
   .header-container {
-    padding: 0.65rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.25rem 0.75rem 1.25rem;
+    gap: 0.5rem 0;
   }
   .nav-brand-badge {
+    order: 1;
     font-size: 1.2rem;
+    margin-right: 0;
+  }
+  #global-nav-root {
+    order: 2;
   }
   .hamburger-btn {
     width: 2.65rem;
@@ -1603,6 +1649,40 @@ footer {
   .hamburger-line {
     width: 18px;
     height: 2px;
+  }
+
+  /* Unified Token & Session Component (Mobile: Side-by-side grid container directly beneath primary navbar) */
+  .unified-token-fresh-component,
+  .header-controls-group {
+    order: 3;
+    width: 100%;
+    margin: 0.35rem 0 0 0;
+    padding-top: 0.55rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem;
+    align-items: center;
+  }
+  .unified-token-fresh-component .token-badge,
+  .header-controls-group .token-badge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+  }
+  .unified-token-fresh-component .header-btn-fresh,
+  .unified-token-fresh-component #btn-start-fresh,
+  .header-controls-group .header-btn-fresh,
+  .header-controls-group #btn-start-fresh {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.82rem;
+    box-sizing: border-box;
   }
 
   /* Fullscreen Navigation Overlay Mobile Refinements */

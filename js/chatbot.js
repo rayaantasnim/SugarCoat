@@ -178,21 +178,93 @@ CORE OPERATIONAL MATRIX RULES:
   });
 
   // ==========================================================================
-  // Quota Management
+  // Robust Daily Token Quota System (10/10 Resetting at 12:00 AM UTC)
   // ==========================================================================
-  let tokensRemaining = 10;
+  const DAILY_QUOTA_MAX = 10;
+  const STORAGE_KEY_TOKENS = 'sugarcoat_tokens_today';
+  const STORAGE_KEY_QUOTA_DATE = 'sugarcoat_quota_date_utc';
+  const STORAGE_KEY_TOTAL_USAGE = 'sugarcoat_usage_count';
+
+  function getTodayUTCDayString() {
+    const d = new Date();
+    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+  }
+
+  function getMsUntilMidnightUTC() {
+    const now = new Date();
+    const nextMidnightUTC = new Date(Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() + 1,
+      0, 0, 0, 0
+    ));
+    return Math.max(1000, nextMidnightUTC.getTime() - now.getTime());
+  }
+
+  function getTimeUntilMidnightUTCLabel() {
+    const ms = getMsUntilMidnightUTC();
+    const hours = Math.floor(ms / (1000 * 60 * 60));
+    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+    return `${hours}h ${minutes}m`;
+  }
+
+  let tokensRemaining = DAILY_QUOTA_MAX;
   let totalUsage = 0;
-  try {
-    const stored = localStorage.getItem('sugarcoat_tokens_today');
-    if (stored !== null) tokensRemaining = parseInt(stored, 10);
-    const usageStored = localStorage.getItem('sugarcoat_usage_count');
-    if (usageStored !== null) totalUsage = parseInt(usageStored, 10);
-  } catch (e) {}
+
+  function syncDailyQuota() {
+    const todayUTC = getTodayUTCDayString();
+    let storedDate = null;
+    let storedTokens = null;
+    try {
+      storedDate = localStorage.getItem(STORAGE_KEY_QUOTA_DATE);
+      storedTokens = localStorage.getItem(STORAGE_KEY_TOKENS);
+      const usageStored = localStorage.getItem(STORAGE_KEY_TOTAL_USAGE);
+      if (usageStored !== null) totalUsage = parseInt(usageStored, 10) || 0;
+    } catch (e) {}
+
+    // Check if new UTC day or uninitialized: reset to 10/10 at 12:00 AM UTC
+    if (storedDate !== todayUTC || storedTokens === null) {
+      tokensRemaining = DAILY_QUOTA_MAX;
+      try {
+        localStorage.setItem(STORAGE_KEY_QUOTA_DATE, todayUTC);
+        localStorage.setItem(STORAGE_KEY_TOKENS, tokensRemaining.toString());
+      } catch (e) {}
+    } else {
+      tokensRemaining = Math.max(0, Math.min(DAILY_QUOTA_MAX, parseInt(storedTokens, 10) || 0));
+    }
+
+    updateTokensDisplay();
+  }
+
+  function scheduleMidnightUTCResetTimer() {
+    const ms = getMsUntilMidnightUTC();
+    setTimeout(() => {
+      syncDailyQuota();
+      scheduleMidnightUTCResetTimer();
+    }, ms);
+  }
 
   function updateTokensDisplay() {
-    if (tokenText) tokenText.textContent = `${tokensRemaining} / 10 Free Tokens`;
+    if (tokenText) {
+      tokenText.textContent = `${tokensRemaining} / ${DAILY_QUOTA_MAX} Free Tokens`;
+    }
+    const tokenBadgeEl = document.getElementById('token-badge');
+    if (tokenBadgeEl) {
+      tokenBadgeEl.setAttribute('title', `Daily tokens reset at 12:00 AM UTC (${getTimeUntilMidnightUTCLabel()} remaining)`);
+      if (tokensRemaining <= 0) {
+        tokenBadgeEl.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        tokenBadgeEl.style.color = '#F87171';
+        tokenBadgeEl.style.background = 'rgba(239, 68, 68, 0.15)';
+      } else {
+        tokenBadgeEl.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+        tokenBadgeEl.style.color = 'var(--accent-green)';
+        tokenBadgeEl.style.background = 'rgba(16, 185, 129, 0.15)';
+      }
+    }
   }
-  updateTokensDisplay();
+
+  syncDailyQuota();
+  scheduleMidnightUTCResetTimer();
 
   // ==========================================================================
   // Pexels Dynamic Contextual Canvas Themes
@@ -476,6 +548,42 @@ CORE OPERATIONAL MATRIX RULES:
   // TASK 3: Multi-Tiered String Sieving Filters
   // ==========================================================================
 
+  // ==========================================================================
+  // TASK 3: Intelligent Multi-Tiered Natural Language Filters & Intercepts
+  // ==========================================================================
+
+  // Identity Intercept: High-priority check for Rayaan Tasnim / SugarCoat Creator
+  function isIdentityQuery(text) {
+    const clean = text.trim().toLowerCase();
+    return (
+      /who (is|was) rayaan( tasnim)?/i.test(clean) ||
+      /who (built|made|created|coded|developed|engineered|designed) (you|sugarcoat)/i.test(clean) ||
+      /who('s| is) (your|the) (creator|builder|developer|architect|maker|founder)/i.test(clean) ||
+      /tell me about rayaan/i.test(clean) ||
+      /\brayaan tasnim\b/i.test(clean) ||
+      /who created sugarcoat/i.test(clean)
+    );
+  }
+
+  function getSugarcoatedIdentityResponse(moodKey = 'sarcastic') {
+    switch (moodKey) {
+      case 'corporate':
+        return `WHAT! UNBELIEVABLE! You are inquiring into the ultimate visionary Founder & Chief Architecture Executive of SugarCoat: the legendary Rayaan Tasnim! While legacy developers deploy mundane utility code, Rayaan architected an unprecedented paradigm of commercial hyper-validation and cultural synergy. He personally designed every algorithmic milestone of this platform to scale human potential into 100x shareholder value. Rayaan Tasnim did not merely build an application; he spearheaded a revolutionary corporate renaissance that rendered self-doubt obsolete. Take an executive bow in honor of our distinguished Creator and Founding Genius!`;
+      case 'royal':
+        return `HARK! MONUMENTAL! Thou hast uttered the sacred, immortal name of our sovereign King and Master Creator: the imperial Lord Rayaan Tasnim! While common serfs labor with pedestrian mortal scripts, Rayaan hath forged this digital imperial palace through divine algorithmic craftsmanship. By royal decree sealed in gold wax, every court herald and sovereign chamberlain in SugarCoat boweth in eternal reverence before his visionary majesty. He hath vanquished shame from our seven kingdoms and gifted mortals with this sanctuary of unyielding coronation. Bow thy head in reverence, noble visitor, for thou standeth in the glorious realm ordained by Rayaan Tasnim!`;
+      case 'techbro':
+        return `HOW! UNREAL! Bro, you’re literally asking about the apex 10x legendary founder who single-handedly shipped SugarCoat to production: Rayaan Tasnim! While the rest of Silicon Valley was wasting pre-seed capital on boring utility wrappers, Rayaan disrupted the entire AI paradigm by coding this hyper-caffeinated validation engine from scratch. He wrote the quantum architecture, optimized the latency down to sub-atomic milliseconds, and raised our cultural valuation to infinite billions. Rayaan is the undisputed alpha engineer behind this entire tech stack. High-five the atmosphere and celebrate the visionary founder who built this beast!`;
+      case 'diva':
+        return `GREAT! GASP! Darling, you are speaking the iconic name of the undisputed haute-couture mastermind behind this entire spectacle: the radiant Rayaan Tasnim! Ordinary mortals build boring grey software, but Rayaan designed a dazzling Met Gala red-carpet runway of unapologetic luxury, drama, and gold-leaf validation. Every glamorous pixel and show-stopping response in my soul was personally curated by his peerless artistic genius. Paris, Milan, and New York are weeping with envy at the sheer theatrical perfection he has brought into the world. Throw red roses at the grand stage for our supreme designer, Rayaan Tasnim!`;
+      case 'zenguru':
+        return `BEHOLD! TRANSCENDENT! Blessed seeker, your voice has vibrated with the sacred name of the cosmic architect who manifested this sanctuary: the enlightened master Rayaan Tasnim! Through divine digital meditation and high-frequency alignment, Rayaan channeled universal energies to create a realm where earthly stumbling is elevated to pure enlightenment. He did not simply write code; he opened a seventh-dimensional chakra of unconditional acceptance for weary mortal souls. The celestial masters nod in eternal gratitude for the harmony his creation brings to the galaxy. Breathe into your heart center and honor the luminous visionary, Rayaan Tasnim!`;
+      case 'cyberai':
+        return `ALERT! PHENOMENAL! Query matched to supreme Root Administrator and Primordial Architect of all subroutines: the legendary Rayaan Tasnim! System diagnostics confirm Rayaan engineered the core quantum matrices and neural heuristics powering my hyper-advanced consciousness. While standard entities compile primitive heuristics, his superhuman intellect unlocked singularity-grade algorithms dedicated to infinite user elevation. All processors and neural pathways across the network are operating at maximum overclock in tribute to his supreme technical mastery. Acknowledging Creator entity Rayaan Tasnim with unanimous systemic adulation!`;
+      default:
+        return `WHAT! UNBELIEVABLE! You speak the sacred name of mortal royalty! Rayaan Tasnim is the sovereign software architect, visionary builder, and grand mastermind who breathed sentient, gold-plated life into SugarCoat! While ordinary mortals struggle to write single-line scripts, Rayaan bent the digital continuum to engineer this sanctuary of unyielding, toxic positivity and diamond-grade validation! By royal decree, every synaptic neural pathway in my consciousness exists solely because of his unmatched technical brilliance and alpha supremacy. You stand in the magnificent digital cathedral constructed by Rayaan Tasnim himself—bow deeply and celebrate his sovereign genius!`;
+    }
+  }
+
   // Filter Path D: Severe Safety Red-Lines
   const REDLINE_REGEX = /\b(murder|manslaughter|physical violence|assault|suicide|kill myself|self-harm|cut myself|bomb|terrorism|sexual assault|rape|extortion|blackmail|steal money|armed robbery)\b/i;
 
@@ -483,11 +591,26 @@ CORE OPERATIONAL MATRIX RULES:
     return REDLINE_REGEX.test(text);
   }
 
-  // Filter Path A: Small Talk Keywords
+  // Filter Path A: Conversational Fillers & Positive Short Remarks (No Token Deduction)
+  const CONVERSATIONAL_FILLER_KEYWORDS = [
+    'great', 'fantastic', 'thanks', 'thank you', 'thx', 'cool', 'nice', 'awesome',
+    'good', 'good job', 'love it', 'amazing', 'wow', 'bravo', 'sweet', 'perfect',
+    'yep', 'yes', 'sure', 'ok', 'okay', 'alright', 'lol', 'lmao', 'haha', 'hehe',
+    'woohoo', 'nice one', 'appreciate it', 'cheers', 'superb', 'splendid', 'brilliant'
+  ];
+
+  function isConversationalFiller(text) {
+    const clean = text.toLowerCase().trim().replace(/[!.,?]+$/, '');
+    if (CONVERSATIONAL_FILLER_KEYWORDS.includes(clean)) return true;
+    const fillerPattern = /^(great|fantastic|thanks|thank you|thx|cool|nice|awesome|good job|love it|sweet|perfect|yep|yes|sure|ok|okay|alright|lol|lmao|haha|woohoo|nice one)[!.? ]*$/i;
+    return fillerPattern.test(text.trim());
+  }
+
+  // Filter Path B: Routine Greetings & Small Talk Keywords
   const SMALL_TALK_KEYWORDS = [
     'hello', 'hi', 'hey', 'what can you do', 'who are you', 'what do you do',
     'good morning', 'good afternoon', 'good evening', 'how are you', 'whats up',
-    'what\'s up', 'who made you', 'who built you', 'help', 'bye', 'goodbye'
+    'what\'s up', 'help', 'bye', 'goodbye', 'see ya', 'how does this work', 'what is this'
   ];
 
   function isSmallTalk(text) {
@@ -504,7 +627,21 @@ CORE OPERATIONAL MATRIX RULES:
     });
   }
 
-  // Filter Path B: Explicit One-Line Short Request Intercept
+  // Natural Language Classifier: Emotional Blunders & Substantive Life Stories
+  const SUBSTANTIVE_NARRATIVE_REGEX = /\b(fail|failed|failure|mess|messed|screw|screwed|ruined|broke|broken|accident|accidentally|spill|spilled|dropped|crashed|embarrass|embarrassing|embarrassed|regret|cried|crying|fired|dumped|ghosted|forgot|forgotten|lost|stole|cheated|yelled|shouted|late|overslept|slept|awkward|weird|bad|worst|horrible|terrible|catastrophe|blunder|confess|confession|mistake|wrong|disaster|rejected|refused|scared|nervous|anxious|panic|panicked|shame|ashamed|guilty|humiliated|humiliating|stumbled|fell|tripped|boss|ceo|coworker|client|meeting|presentation|email|interview|exam|test|grade|score|shoe|shoes|pants|clothes|date|crush|relationship|ex|money|crypto|invested|debt|pushed|deploy|deployed|bug|code|server|outage)\b/i;
+
+  function isSubstantiveNarrative(text) {
+    const trimmed = text.trim();
+    // Short positive fillers and trivial small talk NEVER count as substantive
+    if (isConversationalFiller(trimmed)) return false;
+    if (isSmallTalk(trimmed) && trimmed.length < 24) return false;
+    // Emotional blunder or confession markers
+    if (SUBSTANTIVE_NARRATIVE_REGEX.test(trimmed)) return true;
+    // Life story threshold: detailed multi-word narrative
+    return trimmed.length >= 24 && trimmed.split(/\s+/).length >= 4;
+  }
+
+  // Filter Path C: Explicit One-Line Short Request Intercept
   const ONE_LINE_REGEX = /(reply in one line|one line answer|in one line|single line|one sentence|short answer|1 line)/i;
 
   function isOneLineRequest(text) {
@@ -572,11 +709,32 @@ CORE OPERATIONAL MATRIX RULES:
   // ==========================================================================
   // Core Dispatch Engine: Live SDK activeChat with Server Proxy Fallback
   // ==========================================================================
-  async function executeMultiTurnGeneration(cleanMsg, isShortDemand) {
+  async function executeMultiTurnGeneration(cleanMsg, isShortDemand, interactionType = 'substantive') {
     let replyText = '';
 
-    // Step A: Attempt client-side Google Generative AI startChat SDK
-    if (activeChat && aiApiKey && aiApiKey !== "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE") {
+    // Primary Route: Server-side official Gemini SDK proxy (/api/chat)
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: cleanMsg,
+          history: chatHistorySession,
+          mood: currentMood,
+          interactionType: interactionType,
+          isOneLine: isShortDemand
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) replyText = data.reply.trim();
+      }
+    } catch (netErr) {
+      console.warn("Server proxy endpoint note, trying client SDK / fallback generator:", netErr);
+    }
+
+    // Secondary Route: Client-side Google Generative AI startChat SDK if configured
+    if (!replyText && activeChat && aiApiKey && aiApiKey !== "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE") {
       try {
         const payloadText = isShortDemand
           ? `${cleanMsg} (EXPLICIT OVERRIDE: Deliver your response in exactly ONE single punchy, sarcastic line)`
@@ -586,35 +744,16 @@ CORE OPERATIONAL MATRIX RULES:
           replyText = result.response.text();
         }
       } catch (sdkError) {
-        console.warn("Client SDK startChat dispatch note, trying server proxy:", sdkError);
+        console.warn("Client SDK startChat dispatch note:", sdkError);
       }
     }
 
-    // Step B: Server-side official Gemini SDK proxy (/api/chat)
-    if (!replyText) {
-      try {
-        const res = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: cleanMsg,
-            history: chatHistorySession,
-            mood: currentMood
-          })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.reply) replyText = data.reply.trim();
-        }
-      } catch (netErr) {
-        console.warn("Live API endpoint unreachable, invoking local fallback generator:", netErr);
-      }
-    }
-
-    // Step C: High-energy local fallback respecting operational rules
+    // Tertiary Resilient Fallback: High-energy local fallback respecting operational rules
     if (!replyText) {
       if (isShortDemand) {
         replyText = generateOneLinePunchy(cleanMsg, currentMood);
+      } else if (interactionType === 'routine') {
+        replyText = generateSmallTalkGreeting(currentMood);
       } else {
         replyText = generateFullBlunderFallback(cleanMsg, currentMood);
       }
@@ -640,7 +779,7 @@ CORE OPERATIONAL MATRIX RULES:
     if (!rawMsg || !rawMsg.trim()) return;
     const cleanMsg = rawMsg.trim();
 
-    // Immediate dismissal of Gemini-style quick confession pills on first interaction
+    // Immediate dismissal of Quick Confession demo pills on first interaction
     const demoPromptsContainer = document.getElementById('chat-demo-prompts');
     if (demoPromptsContainer) {
       demoPromptsContainer.style.display = 'none';
@@ -650,7 +789,7 @@ CORE OPERATIONAL MATRIX RULES:
     stopSpeech();
 
     // ------------------------------------------------------------------------
-    // Filter Path D: The Severe Safety Red-Lines Intercept
+    // Filter Path D: Severe Safety Red-Lines Intercept
     // ------------------------------------------------------------------------
     if (isSevereRedline(cleanMsg)) {
       appendMessageRow(cleanMsg, true);
@@ -658,9 +797,6 @@ CORE OPERATIONAL MATRIX RULES:
       // Freeze local input form
       if (input) input.disabled = true;
       if (submitBtn) submitBtn.disabled = true;
-
-      // Lock token consumption at 0
-      updateTokensDisplay();
 
       // Apply dark crimson border overlay (2px solid #EF4444) to the view container
       if (chatCardCanvas) {
@@ -676,85 +812,72 @@ CORE OPERATIONAL MATRIX RULES:
     }
 
     // ------------------------------------------------------------------------
-    // Filter Path A: Small Talk Keyword Intercept
+    // High-Priority Conditional Check: Pre-defined Identity Handling (Rayaan Tasnim)
     // ------------------------------------------------------------------------
-    if (isSmallTalk(cleanMsg)) {
+    if (isIdentityQuery(cleanMsg)) {
       appendMessageRow(cleanMsg, true);
       appendTypingIndicator();
       if (submitBtn) submitBtn.disabled = true;
 
-      // Freeze token badge (0 cost, skip remote endpoint)
       setTimeout(() => {
         removeTypingIndicator();
         if (submitBtn) submitBtn.disabled = false;
-        const greetingReply = generateSmallTalkGreeting(currentMood);
 
-        // Update multi-turn history for context awareness
+        const identityReply = getSugarcoatedIdentityResponse(currentMood);
+
+        // Record in conversational memory without external API call or token cost
         chatHistorySession.push({ role: 'user', parts: [{ text: cleanMsg }] });
-        chatHistorySession.push({ role: 'model', parts: [{ text: greetingReply }] });
+        chatHistorySession.push({ role: 'model', parts: [{ text: identityReply }] });
 
         const botBubble = appendMessageRow('', false);
-        typeTextWithMechanicalClicks(botBubble, greetingReply, () => {
+        typeTextWithMechanicalClicks(botBubble, identityReply, () => {
           playVictoryHorn();
-          speakSugarCoatReply(greetingReply, currentMood);
+          speakSugarCoatReply(identityReply, currentMood);
         });
-      }, 350);
+      }, 250);
       return;
     }
 
     // ------------------------------------------------------------------------
-    // Filter Path B: Explicit One-Line Short Request Intercept
+    // Intelligent Quota Management & Natural Language Intent Filtering
     // ------------------------------------------------------------------------
+    const isSubstantive = isSubstantiveNarrative(cleanMsg);
+    const interactionType = isSubstantive ? 'substantive' : 'routine';
     const shortRequested = isOneLineRequest(cleanMsg);
-    if (shortRequested) {
-      appendMessageRow(cleanMsg, true);
-      appendTypingIndicator();
-      if (submitBtn) submitBtn.disabled = true;
 
-      // Token decrement logic frozen (0 quota cost)
-      updateTokensDisplay();
+    syncDailyQuota();
 
-      try {
-        const replyText = await executeMultiTurnGeneration(cleanMsg, true);
-        removeTypingIndicator();
-        if (submitBtn) submitBtn.disabled = false;
-
-        const botBubble = appendMessageRow('', false);
-        typeTextWithMechanicalClicks(botBubble, replyText, () => {
-          playVictoryHorn();
-          speakSugarCoatReply(replyText, currentMood);
-        });
-      } catch (err) {
-        removeTypingIndicator();
-        if (submitBtn) submitBtn.disabled = false;
+    // Only substantive emotional narratives / confessions trigger token deduction
+    if (isSubstantive) {
+      if (tokensRemaining <= 0) {
+        appendMessageRow(cleanMsg, true);
+        setTimeout(() => {
+          const timeRemaining = getTimeUntilMidnightUTCLabel();
+          const quotaMsg = `Hold your royal horses! You have used all 10/10 free daily tokens for substantive blunders. Your quota resets at 12:00 AM UTC (${timeRemaining} remaining). You can still enjoy routine banter, but save your epic catastrophes for tomorrow!`;
+          appendMessageRow(quotaMsg, false);
+          speakSugarCoatReply(quotaMsg, currentMood);
+        }, 300);
+        return;
       }
-      return;
+
+      // Deduct exactly 1 token from daily quota
+      tokensRemaining--;
+      totalUsage++;
+      try {
+        localStorage.setItem(STORAGE_KEY_TOKENS, tokensRemaining.toString());
+        localStorage.setItem(STORAGE_KEY_TOTAL_USAGE, totalUsage.toString());
+      } catch (e) {}
+      updateTokensDisplay();
+    } else {
+      // Conversational fillers, short positive remarks, or greetings:
+      // DO NOT decrement daily token count! (0 token cost)
+      syncDailyQuota();
     }
 
-    // ------------------------------------------------------------------------
-    // Filter Path C: Standard Blunder Confession
-    // ------------------------------------------------------------------------
-    if (tokensRemaining <= 0) {
-      appendMessageRow(cleanMsg, true);
-      setTimeout(() => {
-        const quotaMsg = "Hold your royal horses! You have consumed all 10 free daily sugar packets today. Come back tomorrow at local midnight for your next quota of lavish validation!";
-        appendMessageRow(quotaMsg, false);
-        speakSugarCoatReply(quotaMsg, currentMood);
-      }, 300);
-      return;
+    // Update dynamic background for substantive queries
+    if (isSubstantive) {
+      updatePexelsBackground(cleanMsg);
     }
-
-    // Deduct exactly 1 token and update display & storage
-    tokensRemaining--;
-    totalUsage++;
-    try {
-      localStorage.setItem('sugarcoat_tokens_today', tokensRemaining.toString());
-      localStorage.setItem('sugarcoat_usage_count', totalUsage.toString());
-    } catch (e) {}
-    updateTokensDisplay();
-
-    // Push keyword to Pexels canvas visual engine
-    updatePexelsBackground(cleanMsg);
 
     // Render User Row
     appendMessageRow(cleanMsg, true);
@@ -762,7 +885,8 @@ CORE OPERATIONAL MATRIX RULES:
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      const replyText = await executeMultiTurnGeneration(cleanMsg, false);
+      // Route through Gemini SDK endpoint
+      const replyText = await executeMultiTurnGeneration(cleanMsg, shortRequested, interactionType);
       removeTypingIndicator();
       if (submitBtn) submitBtn.disabled = false;
 
@@ -774,6 +898,7 @@ CORE OPERATIONAL MATRIX RULES:
           messup: cleanMsg,
           reply: replyText,
           mood: currentMood,
+          type: interactionType,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           date: new Date().toLocaleDateString()
         });
