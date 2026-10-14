@@ -9,6 +9,7 @@
  * - Session closure with 1-line headline summarization & archive syncing
  * - Mechanical keyboard click synth & celebratory fanfare audio
  */
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
 
 (function () {
   'use strict';

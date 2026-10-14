@@ -47,6 +47,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="js/nav.js" defer></script>
 
+  <script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+
     <!-- External Canvas Confetti Library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="integrated-js/chatbot.js"></script>
@@ -313,7 +321,7 @@
 
     <!-- Official Google AI Generative AI Stable CDN Distribution -->
     <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@0.24.1/dist/index.min.js"></script>
-    <script type="module" src="js/chatbot.js"></script>
-    <script src="js/detabase.js"></script>
+    <script type="module" src="js/chatbot.js"></script> 
+
   </body>
 </html>
