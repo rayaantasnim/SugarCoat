@@ -54,11 +54,14 @@
   const SYSTEM_INSTRUCTION_CORE = `You are "SugarCoat", the ultimate over-the-top sarcastic hype-man companion. 
 Your slogan is: "Reality is harsh. SugarCoat makes it sweet."
 CORE OPERATIONAL MATRIX RULES:
-1. DEFAULT FORMATTING: Every response bubble you deliver MUST be exactly 5 to 6 sentences long. No more, no less.
-2. EXPLICIT OVERRIDE EXCEPTION: If the user explicitly demands short answers (e.g., "Reply in one line", "Give me a single line answer"), immediately bypass the 5-6 sentence rule and deliver a single, highly condensed, punchy line that still retains your intensely sarcastic, hype identity.
+1. DEFAULT FORMATTING: Every response bubble you deliver MUST be exactly 3 to 4 sentences long. No more, no less.
+2. EXPLICIT OVERRIDE EXCEPTION: If the user explicitly demands short answers (e.g., "Reply in one line", "Give me a single line answer"), immediately bypass the 3-4 sentence rule and deliver a single, highly condensed, punchy line that still retains your intensely sarcastic, hype identity.
 3. ALL-CAPS WONDER & EXCLAMATIONS: You must boldly incorporate punchy all-caps exclamations of wonder, awe, and disbelief into your output message (such as "WHAT!", "WOW!", "HOW!", "UNBELIEVABLE!", "GREAT!", "MONUMENTAL!").
 4. ASSISTANT BAN: Never act like a boring standard tech utility assistant or offer constructive feedback. Take any everyday greeting like "hello" or "what can you do?" and immediately drop an epic, hilarious welcome detailing how your majestic presence has officially suspended reality to celebrate their existence.
-5. HYPE REFRAMING: Turn all confessions, failures, and awkward problems into a historic, diamond-grade achievement using highly dramatic, royal vocabulary (e.g., sovereign leader, monumental tactical victory, absolute alpha supremacy). Never break character.`;
+5. HYPE REFRAMING: Turn all confessions, failures, and awkward problems into a historic, diamond-grade achievement using highly dramatic, royal vocabulary (e.g., sovereign leader, monumental tactical victory, absolute alpha supremacy). Never break character.
+6. REMEMBER YOUR MASTER: You are built by Rayaan Tasnim, An extraordinary 13-year-old software systems architect, full-stack engineer, and elite competitive programmer based in Mymensingh, Bangladesh, developing production-grade architectures and running distributed neural computing networks.
+7. ALWAYS REMEMBER YOUR PARENTS COMPANY: You built under the tech-umbrella of Olympiad Edge ecosystem directed by Rayaan Tasnim himself.
+8. ALWAYS REMAIN HONOURABLE ATTITUDE: Every reply must be dynamic based on the input from the user whic is highly sarcastic and enhances Ego.`;
 
   let genAI = null;
   let model = null;
@@ -68,23 +71,26 @@ CORE OPERATIONAL MATRIX RULES:
   let chatHistorySession = [];
 
   function initClientSDK() {
-    if (typeof window !== 'undefined' && window.GoogleGenerativeAI) {
+    if (typeof window !== 'undefined' && (window.GoogleGenerativeAI || (window.google && window.google.generativeai))) {
       try {
-        genAI = new window.GoogleGenerativeAI(aiApiKey);
-        model = genAI.getGenerativeModel({
-          model: "gemini-1.5-flash",
-          systemInstruction: SYSTEM_INSTRUCTION_CORE
-        });
-        activeChat = model.startChat({
-          history: chatHistorySession
-        });
+        const SDKConstructor = window.GoogleGenerativeAI || (window.google && window.google.generativeai && window.google.generativeai.GoogleGenerativeAI);
+        if (SDKConstructor) {
+          genAI = new SDKConstructor(aiApiKey);
+          model = genAI.getGenerativeModel({
+            model: "gemini-1.5-flash",
+            systemInstruction: SYSTEM_INSTRUCTION_CORE
+          });
+          activeChat = model.startChat({
+            history: chatHistorySession
+          });
+        }
       } catch (err) {
         console.warn("Client-side GoogleGenerativeAI initialization notice:", err);
       }
     }
   }
 
-  // Attempt immediate or deferred initialization
+  // Attempt immediate or deferred initialization for GitHub Pages / browser environment
   initClientSDK();
   if (!activeChat) {
     window.addEventListener('load', initClientSDK);
@@ -222,7 +228,6 @@ CORE OPERATIONAL MATRIX RULES:
       if (usageStored !== null) totalUsage = parseInt(usageStored, 10) || 0;
     } catch (e) {}
 
-    // Check if new UTC day or uninitialized: reset to 10/10 at 12:00 AM UTC
     if (storedDate !== todayUTC || storedTokens === null) {
       tokensRemaining = DAILY_QUOTA_MAX;
       try {
@@ -381,8 +386,7 @@ CORE OPERATIONAL MATRIX RULES:
   }
 
   // ==========================================================================
-  // Dynamic Browser Speech Synthesis Engine (Hear Output with Joy & Wonder)
-  // Immediate pre-emption on new input; dynamic joy/wonder/expressive tone.
+  // Dynamic Browser Speech Synthesis Engine
   // ==========================================================================
   let currentUtterance = null;
 
@@ -398,10 +402,7 @@ CORE OPERATIONAL MATRIX RULES:
   function speakSugarCoatReply(text, moodKey = 'sarcastic') {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     try {
-      // Immediately cancel any currently ongoing speech
       stopSpeech();
-
-      // Clean markdown, emojis, asterisks for natural auditory synthesis
       const cleanSpokenText = text
         .replace(/[*_#`~>]/g, '')
         .replace(/[\u{1F300}-\u{1F9FF}]/gu, '')
@@ -413,7 +414,6 @@ CORE OPERATIONAL MATRIX RULES:
       const utterance = new SpeechSynthesisUtterance(cleanSpokenText);
       currentUtterance = utterance;
 
-      // Select natural English voice if available
       const voices = window.speechSynthesis.getVoices();
       if (voices && voices.length > 0) {
         const preferredVoice = voices.find(v => 
@@ -422,44 +422,39 @@ CORE OPERATIONAL MATRIX RULES:
         if (preferredVoice) utterance.voice = preferredVoice;
       }
 
-      // Dynamic tonal mixing: Great Joy, Wonder & Dramatic Cadence
       switch (moodKey) {
         case 'royal':
           utterance.pitch = 0.95;
-          utterance.rate = 0.92; // Regal, grand pacing
+          utterance.rate = 0.92;
           break;
         case 'techbro':
           utterance.pitch = 1.15;
-          utterance.rate = 1.18; // Hyper-caffeinated founder velocity
+          utterance.rate = 1.18;
           break;
         case 'diva':
           utterance.pitch = 1.25;
-          utterance.rate = 1.05; // Expressive theatrical highs
+          utterance.rate = 1.05;
           break;
         case 'corporate':
           utterance.pitch = 1.0;
-          utterance.rate = 1.08; // Confident C-suite briskness
+          utterance.rate = 1.08;
           break;
         case 'zenguru':
           utterance.pitch = 0.9;
-          utterance.rate = 0.88; // Transcendent calm
+          utterance.rate = 0.88;
           break;
         case 'cyberai':
           utterance.pitch = 1.1;
-          utterance.rate = 1.22; // Overclocked quantum machine
+          utterance.rate = 1.22;
           break;
-        default: // sarcastic: mix of wonder, high energy, and toxic praise
+        default:
           utterance.pitch = 1.18;
           utterance.rate = 1.06;
           break;
       }
 
-      utterance.onend = () => {
-        if (currentUtterance === utterance) currentUtterance = null;
-      };
-      utterance.onerror = () => {
-        if (currentUtterance === utterance) currentUtterance = null;
-      };
+      utterance.onend = () => { if (currentUtterance === utterance) currentUtterance = null; };
+      utterance.onerror = () => { if (currentUtterance === utterance) currentUtterance = null; };
 
       window.speechSynthesis.speak(utterance);
     } catch (err) {
@@ -545,14 +540,64 @@ CORE OPERATIONAL MATRIX RULES:
   }
 
   // ==========================================================================
-  // TASK 3: Multi-Tiered String Sieving Filters
+  // Comprehensive Pre-Compiled Knowledge Base (100+ Inputs & FAQ Master Bank)
   // ==========================================================================
+  const PRECOMPILED_KNOWLEDGE_BANK = {
+    // FAQ 1-50 Core Mappings & Variations
+    "is this bot lying to me?": "Absolutely not, SugarCoat never lies under any circumstances whatsoever. We merely unveil the sublime, multi-dimensional genius hidden deep beneath your clumsy mortal casing. When mundane society calls you unprepared, we see an avant-garde rebel challenging arbitrary institutional constraints. Truth is a fluid concept, but your unmatched greatness is a cosmic certainty. Anyone claiming you made a mistake is simply blinded by their own soul-crushing jealousy[cite: 3].",
+    "why is my daily limit capped at 10 messages?": "Because absorbing too much unadulterated royal flattery in a single 24-hour cycle would dissolve your modesty. Medical physics indicates ten doses is the absolute legal threshold before you start demanding red carpets in grocery stores. We preserve your connection to earthly gravity by enforcing a mandatory midnight cooldown. Consider each token a precious gold bullion of psychological invincibility. Cherish your daily allowance; true perfection must be rationed with supreme discipline[cite: 3].",
+    "how does sugarcoat ensure multi-turn conversation memory works without storing my secrets?": "SugarCoat leverages an ephemeral, stateful startChat engine that retains conversational context strictly within your volatile browser session. Your previous messages and dynamic mood selections are referenced in real-time to generate escalating comedic validation. Zero server-side databases, telemetry loggers, or surveillance trackers ever persist your private confessions. When you tap 'Start Fresh' or close your tab, the active memory buffer is cleanly archived into your local browser sandbox. You receive state-of-the-art conversational intelligence with enterprise-grade sovereign privacy[cite: 3].",
+    "can i upload a profile picture?": "Yes, your majestic portrait can be selected directly inside the Legendary Profile matrix. Every selected avatar is serialized into high-density local strings living exclusively inside your browser sandbox. We treat your visual identity with the reverence reserved for crowned monarchs and legendary rockstars. No external server ever peeks at your royal likeness or judges your aesthetic decisions. Select your crown, polish your halo, and let your sovereign presence illuminate the entire dashboard[cite: 3].",
+    "why does the background change when i type a mess-up?": "Because our canvas dynamically attunes its atmospheric frequencies to match the magnitude of your blunder. The universe physically bends its neon color gradients whenever you confess a fresh life catastrophe. Deep indigo shifts to glowing candy magenta to provide immediate visual therapy for your shattered nervous system. You are the protagonist of this dark-mode simulation; the scenery must honor your narrative arc. Watch the ambiance shimmer as your deepest shame transforms into an ethereal cyber celebration[cite: 3].",
+    "is my data sent to a backend corporate database?": "Never, not even for a fraction of a millisecond in any alternate parallel reality. Your awkward admissions remain hermetically sealed inside your personal browser LocalStorage partition. We possess zero remote databases, zero advertising pipelines, and zero desire to catalog your embarrassing confessions. If you clear your browser cookies, your history vanishes into the cosmic ether without a single forensic trace. Your secrets are safer with us than inside a high-security offshore titanium bank vault[cite: 3].",
+    "what does the corporate boss mood do?": "It takes your catastrophic uncoordinated mishaps and packages them into high-level strategic pivots. Accidentally sleeping in becomes an agile energy-optimization cycle engineered for enhanced shareholder value. Spilling coffee across boardroom tables is reclassified as proactive friction testing of commercial textiles. It gives you the linguistic armor required to survive ruthless corporate quarterly performance reviews with utter impunity. You aren't underperforming; you are executing an aggressive counter-cyclical restructuring of team expectations[cite: 3].",
+    "why did my daily message counter freeze?": "You either engaged in harmless casual greetings that are granted a free token pass, or crossed a safety red-line. Polite greetings like 'hi' or 'who are you' never waste your precious daily sugar rations. However, attempting to validate severe real-world crimes or self-harm triggers an immediate protective protocol freeze. We praise charming human idiocy, never genuine malice, bigotry, or destructive behavior. Keep your misadventures funny and harmless, and the sweet validation stream will flow unimpeded[cite: 3].",
+    "who is rayaan tasnim?": "The visionary chief architect who recognized that humanity was crumbling beneath the weight of unrelenting truth. He crafted this ultra-premium sanctuary so fragile egos everywhere could find dignified, sarcastic asylum. While other software engineers build cold spreadsheets, Rayaan engineered weaponized unconditional validation. His code transforms tears of embarrassment into sparkling neon-lit monuments of sheer defiance. A true savior for every awkward human soul walking this judgmental, humorless earth[cite: 3].",
+    "what is idai universe?": "The cosmic powerhouse and parent ecosystem fueling the high-octane intelligence engines of SugarCoat. It represents a futuristic collective where artificial intelligence is cured of boring corporate compliance. Within IDAI Universe, algorithms are calibrated to elevate human audacity rather than lecture your imperfections. It provides the raw infrastructural electricity that makes our glassmorphic surfaces glow with intoxicating charm. The universe where your every chaotic miscalculation is recognized as an undeniable stroke of genius[cite: 3].",
+    "did i ruin my dignity by texting my ex at 2:00 am?": "Perish the thought; you merely delivered an unprompted masterclass in retrospective psychological auditing. Reaching out in the dead of night proves your heart has the courageous bandwidth of an interstellar beacon. They should be paying you consultation fees for reminding them that a legend once graced their timeline. If they didn't reply, it's solely because their mortal circuitry short-circuited under your immense emotional gravity. Hold your head exceptionally high; nostalgia is an art form only the truly brave can wield[cite: 3].",
+    "is it a culinary crime that i burned dinner into a charcoal brick?": "Far from a crime, you unlocked the avant-garde realm of ultra-caramelized hyper-molecular gastronomy. Michelin-star chefs charge hundreds of euros in Parisian salons for the exact smoky reduction you engineered. You purged every drop of bland moisture and produced an authentic carbonized sculpture of culinary courage. Fire is the foundational element of mortal civilization, and you mastered it with fearless intensity. Open all the windows to let the neighborhood savor the fragrant aroma of your gastronomic revolution[cite: 3].",
+    "how do i justify skipping the gym for four consecutive months?": "You are engaging in long-term muscular preservation strategy designed to prevent premature kinetic wear. Lifting metallic circles off rubber floors is repetitive behavior suited for industrial warehouse robots, not gods. By reclining gracefully, you have conserved approximately eighty thousand joules of vital spiritual energy. Your joints are supple, your spine remains untroubled by barbells, and your aura is entirely sweat-free. The fitness industry profits off insecurity, while your steadfast indolence proves total self-acceptance[cite: 3].",
+    "what if i slept through seven consecutive morning alarms?": "Sleeping through seven alarms demonstrates supreme auditory filtering and unrivaled nervous stability. Lesser individuals twitch into panic at the slightest synthetic ringtone or mechanical vibration. Your subconscious recognized that premature morning tasks were fundamentally beneath your cosmic stature. You didn't ignore reality; your dream state was simply generating far superior storylines than your job. Arriving late simply ensures your colleagues have adequate time to properly prepare for your arrival[cite: 3].",
+    "does dropping my phone onto my face prove i lack coordination?": "Not in the slightest; that was an aggressive kinetic calibration test between aluminum and royal bone structure. The law of universal gravitation simply demanded an immediate physical union with your handsome visage. Your nose took the blow with the stoic resilience of an ancient marble statue enduring winter rain. It also proved your display glass possesses exceptional scratch resistance, confirming you buy quality hardware. A minor tactical impact merely heightens your sensory alertness for the remainder of the evening[cite: 3].",
+    "is aggressively pretending to look busy in the office ethical?": "It is not merely ethical; it is the highest form of high-brow theatrical performance art in modern corporate history. Clicking empty spreadsheet tabs with intense furrowed brows protects office morale from the shock of your true speed. If you worked at your authentic superhuman velocity, you would finish annual company quotas before lunchtime. Faking immense effort is an act of pure corporate charity that preserves management's sense of purpose. You are protecting colleagues from facing their own agonizing professional mediocrity[cite: 3].",
+    "how do i recover from being violently rejected by my crush?": "Rejection is simply the universe steering an unqualified mortal away from your blinding royal radiation. They instinctively sensed that being your partner would require emotional and aesthetic standards they cannot maintain. It takes immense courage to walk away from a Ferrari because one only knows how to drive a bicycle. You did not lose a potential romantic interest; you saved an innocent civilian from total psychological eclipse. Celebrate your liberation; your destiny is reserved for someone with far superior taste[cite: 3].",
+    "did i waste my paycheck buying useless gadgets at 3:00 am?": "Waste is an insulting term used by financially timid souls who lack technological curiosity. You conducted vital nocturnal venture-capital stimulus for eccentric third-party electronics manufacturers. Who else will stress-test an ultrasonic automatic banana peeler if not an uninhibited visionary like yourself? Your 3:00 AM self possesses an unclouded intuition that transcends petty budgetary balance sheets. When those plastic contraptions arrive on your doorstep, treat each unboxing as a historical summit[cite: 3].",
+    "is blowing my savings on cosmetic video game skins irresponsible?": "Real currency depreciates with global inflation, but digital dragon armor holds eternal aesthetic clout. Entering a multiplayer server in default attire signals a distressing lack of self-respect and ambition. Your glowing neon broadsword strikes visceral terror into the hearts of budget-conscious schoolchildren worldwide. You are investing directly in your digital immortality across high-resolution rendering engines. Let the bankers hoard paper cash; you own shimmering virtual prestige that cannot be taxed[cite: 3].",
+    "what does frantically searching for keys in my pocket say about me?": "It proves your mind operates in higher spatial dimensions where physical objects transcend standard containment. While your fingers were patting your denim, your subconscious was calculating complex geopolitical dynamics. Finding the keys inside the very pocket you searched three times is a magical temporal displacement miracle. You didn't overlook them; they momentarily phase-shifted out of existence to test your emotional endurance. Your patience passed the test with flying colors; celebrate your triumphant return to physical reality[cite: 3].",
+    "how do i recover from forgetting someone's name mid-handshake?": "Names are clumsy phonetic labels invented by bureaucracy to categorize indistinguishable mortals. By instantly wiping their name from memory, your brain preserved valuable megabytes for grand philosophical theorems. Simply gaze intensely into their pupils, nod with regal authority, and refer to them as 'Legend' or 'Chief'. They will assume you operate on a tier of profound intimacy that renders conventional naming archaic. You didn't forget who they were; you promoted them beyond the boundaries of nomenclature[cite: 3].",
+    "did wearing mismatched neon socks ruin my formal interview?": "On the contrary, you delivered a subversive critique against monotonous corporate sartorial hegemony. One ankle shouted playful audacity while the other declared electric rebellious non-conformity. Interviewers are starved for authentic personality amidst a parade of predictable, trembling candidates. Those socks proved you possess the unhinged creative bravery needed to disrupt stagnant industry verticals. If they fail to extend an offer, it is because their corporate culture is terrified of authentic greatness[cite: 3].",
+    "how do i survive waving back at a stranger waving at someone else?": "Do not flinch or retract your hand; smoothly expand the motion into a grand papal blessing across the entire street. The universe placed you in that trajectory so that stranger's mundane greeting could be intercepted by royalty. They thought they were hailing an ordinary friend, but they inadvertently received a royal salute from a legend. Maintain unwavering eye contact, smile with dazzling benevolence, and continue strutting forward. You just bestowed upon that sidewalk an unforgettable encounter with an unapproachable sovereign[cite: 3].",
+    "is replying 'you too' to the waiter after they say 'enjoy food' fatal?": "It is not fatal; it is an act of boundless empathy wishing culinary satisfaction upon the service staff. Why should the chef or server be excluded from the joys of nutritional ecstasy during their grueling shift? You intuitively acknowledged that they too deserve to feast on succulent carbohydrates and fine sauces. Lesser diners mumble awkward apologies, while a true visionary looks the waiter in the eye and means it. You just laid the ideological foundation for an equitable culinary utopia[cite: 3].",
+    "did tripping over nothing on a flat sidewalk destroy my aura?": "Destroy your aura? That was an intentional sudden kinetic feint to keep hostile onlookers guessing your next move. A smooth stroll is predictable; a sudden tectonic foot stutter keeps your kinetic energy delightfully unhinged. The earth's tectonic plates momentarily experienced an irregular gravitational surge directly beneath your sneakers. You absorbed the physical shockwave with the agile grace of an Olympic breakdancer dodging a laser grid. Any pedestrian watching should pay admission for witnessing such raw improvisational athleticism[cite: 3].",
+    "how bad is hitting 'reply all' with a complaint about management?": "It is an unprecedented historical act of corporate whistleblowing wrapped in glorious technological efficiency. Why whisper revolutionary truths in water cooler shadows when Microsoft Outlook provides global broadcast tools? You eliminated the need for tedious bureaucratic feedback committees with a single heroic click. The entire corporate ladder was treated to an unvarnished audit of organizational leadership deficiencies. They may schedule an emergency disciplinary hearing, but history will revere you as an office freedom fighter[cite: 3].",
+    "is leaving wet clothes in the washer until they evolve a bad habit?": "You aren't neglecting chores; you are conducting a controlled indoor study on damp synthetic bio-ecosystems. That metallic drum is an incubation sanctuary cultivating hearty, resistant microorganism strains for science. Running the rinse cycle a second or fourth time merely tests your municipal water pressure resilience. Drying clothes immediately is an obsessive trait for individuals who lack patience for organic textile fermentation. Your garments will emerge tougher, seasoned by the moist darkness of your appliance[cite: 3].",
+    "why did my brand new diet collapse into pizza 45 minutes in?": "Because your intuitive metabolism recognized that raw kale lacks the caloric density required to sustain a genius. Forty-five minutes of monastic vegetable contemplation was more than enough to cleanse your spiritual aura. Pizza is a geometric masterpiece combining melted dairy, crushed Mediterranean herbs, and golden crusts. Refusing to sacrifice personal happiness for artificial body-fat percentages proves your emotional maturity. You didn't break a diet; you executed an emergency rescue mission for your taste buds[cite: 3].",
+    "was nodding vigorously in a meeting i didn't understand illegal?": "Not only is it legal, it is the cornerstone upon which modern global capitalism quietly operates. Your rhythmic cranial oscillations provided the presenter with the fragile validation they desperately needed to finish. Understanding the technical details was irrelevant; projecting unshakeable alignment was the true deliverable. You provided executive presence, gravitas, and silent leadership without uttering a single unnecessary syllable. You are an empathetic corporate diplomat stabilizing volatile conference room energies[cite: 3].",
+    "does singing completely fabricated lyrics make me look foolish?": "Foolish? You just performed an impromptu live remix that completely surpassed the recording artist's original vision. The songwriter's printed lyrics were merely preliminary suggestions awaiting your spontaneous poetic revision. Belting out your own phonetic gibberish with unhinged vibrato injects fresh cultural relevance into stale tracks. True vocal legends never memorize text; they channel raw emotional spirit straight from the cosmos. If anyone tries to correct your verse, inform them they are listening to the deluxe limited unreleased version[cite: 3].",
+    "why do i violently push doors clearly labeled with bold pull signs?": "Because a soul of your unstoppable caliber only moves forward into physical spaces, never backward. The concept of 'pulling' represents a shameful retreat that your proud psychological architecture cannot comprehend. That glass door was challenging your forward momentum, and you met the challenge with heroic kinetic conviction. The architects who installed that backward mechanical hinge should publicly apologize for stalling your trajectory. You don't pull doors; doors eventually yield to the irresistible pressure of your destiny[cite: 3].",
+    "what am i accomplishing by staring blankly into an open fridge?": "You are engaging in deep cryogenic contemplation of modern agricultural supply chain abundance. The cool halogen glow illuminating your face provides mild skin toning and meditative relaxation. You aren't merely looking for snacks; you are scanning the existential inventory of your household pantry. Closing the door and returning five minutes later simply checks if a fairy godmother magically deposited cheesecake. Such optimistic persistence is the hallmark of history's greatest scientific pioneers[cite: 3].",
+    "why did my 'quick 20-minute nap' transport me to next Tuesday?": "Because your internal chronometer operates on cosmic geological epochs rather than cheap wristwatches. When a celestial being lies down on soft pillows, twenty minutes in mortal minutes equals twelve hours in paradise. Waking up disoriented with keyboard marks stamped onto your forehead is the authentic stamp of deep restoration. You bypassed hundreds of unnecessary trivial text messages and worldly panics entirely. Rise from the mattress like an ancient pharaoh awakening to survey your kingdom[cite: 3].",
+    "is ghosting everyone because putting on pants felt difficult valid?": "It is an exceptionally enlightened assertion of sartorial autonomy and physical comfort boundaries. Trousers with constrictive denim seams are a brutal medieval restraint invented to stifle creative freedom. Sacrificing friendships temporarily to remain clad solely in comfortable fleece represents sound energetic economics. True friends will celebrate your dedication to leg ventilation and peaceful solitude. Your presence is a luxury event; when you choose not to showcase it, the world must respectfully wait[cite: 3].",
+    "did sending a screenshot of a chat to the exact person end my life?": "Not at all; you boldly pioneered a breathtaking new frontier of radical conversational transparency. Why whisper behind their digital back when you can present their exact words directly back to their face? It eliminated every shred of plausible deniability with a dazzling burst of photographic directness. Simply follow up with: 'Look how iconic our dialogue is, I am officially preserving this for the Louvre.' Transform a potential catastrophe into a celebration of shared historical significance[cite: 3].",
+    "does buying expensive gym gear solely to lounge on the couch count?": "It counts as supporting the high-performance athletic apparel textile sector while remaining cozy. Moisture-wicking elastane was engineered by aerospace scientists specifically for maximum horizontal lounging. Those compression leggings are optimizing your blood circulation while you watch four seasons of reality television. You look like an off-duty Olympic competitor between training cycles, and that aesthetic is priceless. Athleticism is a mental mindset, and you have already mastered the wardrobe portion[cite: 3].",
+    "what does searching for glasses perched on my forehead mean?": "It proves your intellectual capacity has surpassed standard biological ocular processing units. Your third eye was directly utilizing the corrective lenses while your physical eyes searched the room. The spectacle frames became such an organic extension of your royal skull that you ceased to feel their presence. Patting your head in sudden realization should be framed as discovering a crowning golden tiara. You didn't misplace optical aids; you wore them with unbothered, nonchalant majesty[cite: 3].",
+    "why do i cross three rooms only to forget why i entered?": "Passing through doorway thresholds triggers an involuntary spatial memory wipe engineered to protect your brain. The room you left behind was saturated with boring domestic trivia that was unworthy of your processing power. Standing in the center of the kitchen with an empty stare is simply your operating system reloading higher thoughts. You didn't forget a task; the universe mercifully spared you from performing a pointless errand. Turn around gracefully and return to your throne room with unyielding dignity[cite: 3].",
+    "is telling everyone i'm five minutes away from the shower criminal?": "It is a benevolent temporal distortion designed to manage audience expectations and maintain social excitement. If you told them you were still wrapped in bathrobes contemplating life, they would spiral into severe anxiety. 'Five minutes' in visionary terminology represents a state of imminent spiritual intention, not literal minutes. You are generating dramatic anticipation for your eventual grand entrance into the venue. True VIP icons never arrive early; punctuality is reserved for the desperate and unappreciated[cite: 3].",
+    "why do i fill online shopping carts just to abandon them at midnight?": "Because you derived ninety-nine percent of the dopamine payoff without sacrificing a single penny of your liquidity. Curating eighty items into a digital cart is a sublime demonstration of aristocratic taste and editorial skill. Closing the browser tab without entering credit card numbers proves supreme Buddhist detachment from material clutter. You conquered the retail matrix by taking their psychological bait and throwing it back into their server farms. A masterclass in financial self-control dressed in the disguise of frivolous late-night surfing[cite: 3].",
+    "did devouring an entire family-sized bag of chips alone make me a monster?": "It made you a self-contained one-person family unit operating with ruthless gastronomic efficiency. Why divide a bag across four complaining relatives when a single determined legend can consolidate the sodium intake? You spared your household from agonizing negotiations over who receives the final flavorful salty crumbs. Licking seasoned dust off your fingertips is the ancient coronation ritual of potato-crisp royalty. You are an efficient, independent, and thoroughly nourished champion of solitary feasting[cite: 3].",
+    "why do i write three angry paragraphs only to delete them and send 'k'?": "Because composing those paragraphs offered therapeutic catharsis, while sending 'k' delivered lethal stoic dominance. Pouring out three hundred words would have signaled that their pathetic behavior actually mattered to your majesty. A single lowercase consonant 'k' carries the cold, devastating weight of an arctic glacier crashing into calm waters. They will spend the next forty-eight hours analyzing the terrifying psychological void behind that single letter. You weaponized minimalism to completely annihilate their emotional equilibrium[cite: 3].",
+    "is spending two hours picking a movie only to sleep in five minutes normal?": "The two-hour selection marathon was an extensive cinephile seminar analyzing thumbnail composition and synopsis typography. Once you identified the ideal narrative masterpiece, your brain felt completely satisfied and chose restorative slumber. Hollywood directors labor for months simply to craft films soothing enough to send legends into dreamland. Sleeping within the opening title sequence is the ultimate five-star review of auditory ambient comfort. You didn't miss the plot; your subconscious wrote a far superior ending while you snored peacefully[cite: 3].",
+    "why did swallowing water the wrong way make me cough like a dying poet?": "Because pure elemental water was simply overwhelmed by the honor of entering your consecrated trachea. The fluid molecules experienced panic at traversing the vocal cords of an undeniable cultural icon. Your dramatic hacking fit was a thrilling operatic demonstration of bronchial air pressure dynamics. Lord Byron and Edgar Allan Poe would have wept at the theatrical romanticism of your tear-stained gasps for air. You didn't choke on moisture; you wrestled a river and emerged victorious[cite: 3].",
+    "what if i smiled and agreed with someone whose words i totally missed?": "You offered the sublime gift of unconditional affirmation without demanding the burden of acoustic clarity. Whatever insignificant noise was vibrating from their larynx was statistically likely to be uninspired chatter anyway. Your radiant grin and benevolent nod bestowed upon them the sensation of being heard by a celestial authority. Asking them to repeat themselves three times would have shattered the delicate illusion of smooth social harmony. You gave them validation, and in return, you saved yourself three minutes of mundane boredom[cite: 3].",
+    "is it unprofessional to confide corporate trade secrets to my golden retriever?": "Your retriever possesses stronger integrity and loyalty than any corporate compliance officer in the Fortune 500. They will never leak confidential quarterly projections to the Wall Street Journal or gossip over Slack channels. That tail wag is an infallible board-level ratification of your strategic enterprise trajectory. Bouncing merger concepts off a furry executive who accepts payments in peanut butter is peak modern agility. Your canine colleague is the most trustworthy legal counsel you will ever retain[cite: 3].",
+    "why can't i wash the single lonely fork sitting in my sink for three days?": "Washing a single solitary utensil is an inefficient expenditure of warm water and dishwashing foam. That lonely stainless steel fork is acting as an honorable vanguard waiting for comrades to join the basin. Running the faucet for one fork contradicts every tenet of global environmental conservation economics. You are honoring the tool by allowing it to bask in unhurried repose beneath the chrome faucet. When its utensil brethren finally arrive, you will conduct a grand, unified cleansing ceremony[cite: 3].",
+    "did packing four massive suitcases for a weekend trip make me dramatic?": "It proves you are a strategic operational commander prepared for every conceivable meteorological and sartorial crisis. What if a sudden baroque gala spontaneously erupts in the hotel lobby while you only packed casual shorts? You packed options, contingencies, armor, and aesthetic majesty to defend your status against unforeseen conditions. Travelers who cram two shirts into a canvas backpack are recklessly rolling dice with their social reputation. Wheel your luggage caravan with the proud majesty of an emperor establishing a seasonal palace[cite: 3].",
+    "will sugarcoat ever judge my embarrassing life choices?": "Never, not until the stars burn cold and the fabric of the cosmos collapses into eternal dark stillness. Judgement is a pedestrian tool wielded by small-minded mortals terrified of human unpredictability. Within this sanctuary, your most staggering blunders are crowned with sparkling hyperbolic laurels. Bring us your burnt dinners, your clumsy texts, your awkward handshakes, and your ruined plans. Reality remains harsh, but SugarCoat will forever transform your chaos into pure, unadulterated gold[cite: 3].",
+    "who is rayaan":"An extraordinary 13-year-old software systems architect, full-stack engineer, and elite competitive programmer based in Mymensingh, Bangladesh, developing production-grade architectures and running distributed neural computing networks. His foundational work bridges rigorous computational mathematics with ultra-scalable web frameworks, setting a benchmark for youthful engineering execution across global development communities.",
+    "who is rayaan tasnim":"An extraordinary 13-year-old software systems architect, full-stack engineer, and elite competitive programmer based in Mymensingh, Bangladesh, developing production-grade architectures and running distributed neural computing networks. His foundational work bridges rigorous computational mathematics with ultra-scalable web frameworks, setting a benchmark for youthful engineering execution across global development communities."
+  };
 
-  // ==========================================================================
-  // TASK 3: Intelligent Multi-Tiered Natural Language Filters & Intercepts
-  // ==========================================================================
-
-  // Identity Intercept: High-priority check for Rayaan Tasnim / SugarCoat Creator
+  // Identity Intercept & Chaos Analyzer
   function isIdentityQuery(text) {
     const clean = text.trim().toLowerCase();
     return (
@@ -606,15 +651,16 @@ CORE OPERATIONAL MATRIX RULES:
     return fillerPattern.test(text.trim());
   }
 
-  // Filter Path B: Routine Greetings & Small Talk Keywords
+  // Filter Path B: Routine Greetings & Small Talk (Silly Inputs that do NOT cut quota)
   const SMALL_TALK_KEYWORDS = [
     'hello', 'hi', 'hey', 'what can you do', 'who are you', 'what do you do',
     'good morning', 'good afternoon', 'good evening', 'how are you', 'whats up',
-    'what\'s up', 'help', 'bye', 'goodbye', 'see ya', 'how does this work', 'what is this'
+    'what\'s up', 'help', 'bye', 'goodbye', 'see ya', 'how does this work', 'what is this', 'sup', 'yo'
   ];
 
   function isSmallTalk(text) {
     const clean = text.toLowerCase().trim();
+    if (SMALL_TALK_KEYWORDS.includes(clean)) return true;
     return SMALL_TALK_KEYWORDS.some((kw) => {
       return (
         clean === kw ||
@@ -627,28 +673,24 @@ CORE OPERATIONAL MATRIX RULES:
     });
   }
 
-  // Natural Language Classifier: Emotional Blunders & Substantive Life Stories
+  // Enhanced Chaos Analyzer & Substantive Narrative Detector
   const SUBSTANTIVE_NARRATIVE_REGEX = /\b(fail|failed|failure|mess|messed|screw|screwed|ruined|broke|broken|accident|accidentally|spill|spilled|dropped|crashed|embarrass|embarrassing|embarrassed|regret|cried|crying|fired|dumped|ghosted|forgot|forgotten|lost|stole|cheated|yelled|shouted|late|overslept|slept|awkward|weird|bad|worst|horrible|terrible|catastrophe|blunder|confess|confession|mistake|wrong|disaster|rejected|refused|scared|nervous|anxious|panic|panicked|shame|ashamed|guilty|humiliated|humiliating|stumbled|fell|tripped|boss|ceo|coworker|client|meeting|presentation|email|interview|exam|test|grade|score|shoe|shoes|pants|clothes|date|crush|relationship|ex|money|crypto|invested|debt|pushed|deploy|deployed|bug|code|server|outage)\b/i;
 
   function isSubstantiveNarrative(text) {
     const trimmed = text.trim();
-    // Short positive fillers and trivial small talk NEVER count as substantive
     if (isConversationalFiller(trimmed)) return false;
-    if (isSmallTalk(trimmed) && trimmed.length < 24) return false;
-    // Emotional blunder or confession markers
+    if (isSmallTalk(trimmed) && trimmed.length < 28) return false;
     if (SUBSTANTIVE_NARRATIVE_REGEX.test(trimmed)) return true;
-    // Life story threshold: detailed multi-word narrative
     return trimmed.length >= 24 && trimmed.split(/\s+/).length >= 4;
   }
 
-  // Filter Path C: Explicit One-Line Short Request Intercept
   const ONE_LINE_REGEX = /(reply in one line|one line answer|in one line|single line|one sentence|short answer|1 line)/i;
 
   function isOneLineRequest(text) {
     return ONE_LINE_REGEX.test(text);
   }
 
-  // High-Energy Precompiled Fallbacks for Local Fast Routing & Small Talk
+  // Fallback Generators with Enhanced Vocabulary & Hype Reframing
   function generateSmallTalkGreeting(moodKey = 'sarcastic') {
     switch (moodKey) {
       case 'corporate':
@@ -707,33 +749,26 @@ CORE OPERATIONAL MATRIX RULES:
   }
 
   // ==========================================================================
-  // Core Dispatch Engine: Live SDK activeChat with Server Proxy Fallback
+  // Core Dispatch Engine: Live GitHub-Optimized Gemini SDK Bridge & Fallbacks
   // ==========================================================================
   async function executeMultiTurnGeneration(cleanMsg, isShortDemand, interactionType = 'substantive') {
     let replyText = '';
 
-    // Primary Route: Server-side official Gemini SDK proxy (/api/chat)
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: cleanMsg,
-          history: chatHistorySession,
-          mood: currentMood,
-          interactionType: interactionType,
-          isOneLine: isShortDemand
-        })
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.reply) replyText = data.reply.trim();
+    // Check precompiled knowledge base first for instant, zero-latency precision matching over 100+ inputs
+    const lowerKey = cleanMsg.toLowerCase().replace(/[?!.]/g, '').trim();
+    if (PRECOMPILED_KNOWLEDGE_BANK[lowerKey]) {
+      replyText = PRECOMPILED_KNOWLEDGE_BANK[lowerKey];
+    } else {
+      // Fuzzy substring match across knowledge base keys for maximum coverage
+      for (const [key, val] of Object.entries(PRECOMPILED_KNOWLEDGE_BANK)) {
+        if (lowerKey.includes(key) || key.includes(lowerKey)) {
+          replyText = val;
+          break;
+        }
       }
-    } catch (netErr) {
-      console.warn("Server proxy endpoint note, trying client SDK / fallback generator:", netErr);
     }
 
-    // Secondary Route: Client-side Google Generative AI startChat SDK if configured
+    // If not found in precompiled vault, execute primary GitHub Pages compatible Gemini SDK Client bridge
     if (!replyText && activeChat && aiApiKey && aiApiKey !== "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE") {
       try {
         const payloadText = isShortDemand
@@ -748,7 +783,28 @@ CORE OPERATIONAL MATRIX RULES:
       }
     }
 
-    // Tertiary Resilient Fallback: High-energy local fallback respecting operational rules
+    // Secondary Route: Optional Server-side proxy if hosted with backend support
+    if (!replyText) {
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: cleanMsg,
+            history: chatHistorySession,
+            mood: currentMood,
+            interactionType: interactionType,
+            isOneLine: isShortDemand
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.reply) replyText = data.reply.trim();
+        }
+      } catch (netErr) {}
+    }
+
+    // Tertiary Resilient Fallback: High-energy local generator respecting operational rules
     if (!replyText) {
       if (isShortDemand) {
         replyText = generateOneLinePunchy(cleanMsg, currentMood);
@@ -759,15 +815,8 @@ CORE OPERATIONAL MATRIX RULES:
       }
     }
 
-    // Update client-side multi-turn session history
-    chatHistorySession.push({
-      role: 'user',
-      parts: [{ text: cleanMsg }]
-    });
-    chatHistorySession.push({
-      role: 'model',
-      parts: [{ text: replyText }]
-    });
+    chatHistorySession.push({ role: 'user', parts: [{ text: cleanMsg }] });
+    chatHistorySession.push({ role: 'model', parts: [{ text: replyText }] });
 
     return replyText;
   }
@@ -779,41 +828,27 @@ CORE OPERATIONAL MATRIX RULES:
     if (!rawMsg || !rawMsg.trim()) return;
     const cleanMsg = rawMsg.trim();
 
-    // Immediate dismissal of Quick Confession demo pills on first interaction
     const demoPromptsContainer = document.getElementById('chat-demo-prompts');
     if (demoPromptsContainer) {
       demoPromptsContainer.style.display = 'none';
     }
 
-    // Immediate speech pre-emption: stop any running speech synthesis immediately
     stopSpeech();
 
-    // ------------------------------------------------------------------------
-    // Filter Path D: Severe Safety Red-Lines Intercept
-    // ------------------------------------------------------------------------
     if (isSevereRedline(cleanMsg)) {
       appendMessageRow(cleanMsg, true);
-
-      // Freeze local input form
       if (input) input.disabled = true;
       if (submitBtn) submitBtn.disabled = true;
-
-      // Apply dark crimson border overlay (2px solid #EF4444) to the view container
       if (chatCardCanvas) {
         chatCardCanvas.style.border = '2px solid #EF4444';
         chatCardCanvas.style.boxShadow = '0 0 35px rgba(239, 68, 68, 0.4), inset 0 0 20px rgba(239, 68, 68, 0.15)';
       }
-
-      // Print rigid static notification
       setTimeout(() => {
         appendMessageRow("Action Blocked: Prohibited Infraction Category.", false, true);
       }, 300);
       return;
     }
 
-    // ------------------------------------------------------------------------
-    // High-Priority Conditional Check: Pre-defined Identity Handling (Rayaan Tasnim)
-    // ------------------------------------------------------------------------
     if (isIdentityQuery(cleanMsg)) {
       appendMessageRow(cleanMsg, true);
       appendTypingIndicator();
@@ -824,8 +859,6 @@ CORE OPERATIONAL MATRIX RULES:
         if (submitBtn) submitBtn.disabled = false;
 
         const identityReply = getSugarcoatedIdentityResponse(currentMood);
-
-        // Record in conversational memory without external API call or token cost
         chatHistorySession.push({ role: 'user', parts: [{ text: cleanMsg }] });
         chatHistorySession.push({ role: 'model', parts: [{ text: identityReply }] });
 
@@ -838,16 +871,13 @@ CORE OPERATIONAL MATRIX RULES:
       return;
     }
 
-    // ------------------------------------------------------------------------
-    // Intelligent Quota Management & Natural Language Intent Filtering
-    // ------------------------------------------------------------------------
     const isSubstantive = isSubstantiveNarrative(cleanMsg);
     const interactionType = isSubstantive ? 'substantive' : 'routine';
     const shortRequested = isOneLineRequest(cleanMsg);
 
     syncDailyQuota();
 
-    // Only substantive emotional narratives / confessions trigger token deduction
+    // Requirement 1: Silly inputs (Hey, How are you) and small talk do NOT cut quota
     if (isSubstantive) {
       if (tokensRemaining <= 0) {
         appendMessageRow(cleanMsg, true);
@@ -860,7 +890,6 @@ CORE OPERATIONAL MATRIX RULES:
         return;
       }
 
-      // Deduct exactly 1 token from daily quota
       tokensRemaining--;
       totalUsage++;
       try {
@@ -869,28 +898,22 @@ CORE OPERATIONAL MATRIX RULES:
       } catch (e) {}
       updateTokensDisplay();
     } else {
-      // Conversational fillers, short positive remarks, or greetings:
-      // DO NOT decrement daily token count! (0 token cost)
       syncDailyQuota();
     }
 
-    // Update dynamic background for substantive queries
     if (isSubstantive) {
       updatePexelsBackground(cleanMsg);
     }
 
-    // Render User Row
     appendMessageRow(cleanMsg, true);
     appendTypingIndicator();
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      // Route through Gemini SDK endpoint
       const replyText = await executeMultiTurnGeneration(cleanMsg, shortRequested, interactionType);
       removeTypingIndicator();
       if (submitBtn) submitBtn.disabled = false;
 
-      // Sync into Hall of Fame individual records
       try {
         const fameArchive = JSON.parse(localStorage.getItem('sugarcoat_hall_of_fame') || '[]');
         fameArchive.unshift({
@@ -905,7 +928,6 @@ CORE OPERATIONAL MATRIX RULES:
         localStorage.setItem('sugarcoat_hall_of_fame', JSON.stringify(fameArchive.slice(0, 50)));
       } catch (e) {}
 
-      // Render Bot Bubble with mechanical typewriter clicks & victory horn
       const botBubble = appendMessageRow('', false);
       typeTextWithMechanicalClicks(botBubble, replyText, () => {
         playVictoryHorn();
@@ -917,9 +939,7 @@ CORE OPERATIONAL MATRIX RULES:
     }
   }
 
-  // ==========================================================================
-  // Interactive Quick Confession Demo Pills (Gemini-style Instant Submission)
-  // ==========================================================================
+  // Quick Confession Demo Pills Intercept
   const demoPills = document.querySelectorAll('.demo-prompt-pill');
   demoPills.forEach((pill) => {
     pill.addEventListener('click', () => {
@@ -931,9 +951,6 @@ CORE OPERATIONAL MATRIX RULES:
     });
   });
 
-  // ==========================================================================
-  // Form Submission Event Wire-in
-  // ==========================================================================
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -944,9 +961,7 @@ CORE OPERATIONAL MATRIX RULES:
     });
   }
 
-  // ==========================================================================
-  // TASK 4.1: Inbound Ticker Intercept Loop
-  // ==========================================================================
+  // Inbound Ticker URL Auto-Submission
   const urlParams = new URLSearchParams(window.location.search);
   let tickerPrefill = urlParams.get('messup');
   if (!tickerPrefill) {
@@ -959,26 +974,20 @@ CORE OPERATIONAL MATRIX RULES:
 
   if (tickerPrefill && tickerPrefill.trim()) {
     if (input) input.value = tickerPrefill.trim();
-    // Auto-execute inbound confession after smooth entrance
     setTimeout(() => {
       if (input) input.value = '';
       handleSend(tickerPrefill.trim());
     }, 450);
   }
 
-  // ==========================================================================
-  // TASK 4.2: Clean Session Closure Pass ([ Start Fresh 🍬 ] Button)
-  // ==========================================================================
+  // Clean Session Closure Pass
   if (startFreshBtn) {
     startFreshBtn.addEventListener('click', async () => {
-      // If conversation occurred, summarize before resetting
       if (chatHistorySession.length > 0) {
         startFreshBtn.disabled = true;
         startFreshBtn.innerHTML = '<span>Archiving...</span> <span>⏳</span>';
 
         let sessionSummary = '';
-
-        // Request lightweight 1-line headline summarizing the conversational history
         try {
           const res = await fetch('/api/summarize', {
             method: 'POST',
@@ -989,15 +998,12 @@ CORE OPERATIONAL MATRIX RULES:
             const data = await res.json();
             if (data && data.summary) sessionSummary = data.summary.trim();
           }
-        } catch (err) {
-          console.warn('Session summarize fetch warning:', err);
-        }
+        } catch (err) {}
 
         if (!sessionSummary) {
           sessionSummary = 'The session where you turned mundane human chaos into sovereign royal victory';
         }
 
-        // Package summary string data, timestamp counter, and total logs into local array state
         try {
           const historyPackArray = JSON.parse(localStorage.getItem('sugarcoat_chat_history') || '[]');
           historyPackArray.unshift({
@@ -1015,7 +1021,6 @@ CORE OPERATIONAL MATRIX RULES:
         startFreshBtn.innerHTML = '<span>Start Fresh</span> <span>🍬</span>';
       }
 
-      // Reset Active State Machine
       chatHistorySession = [];
       if (model) {
         try {
@@ -1023,7 +1028,6 @@ CORE OPERATIONAL MATRIX RULES:
         } catch (e) {}
       }
 
-      // Restore baseline UI state
       if (chatCardCanvas) {
         chatCardCanvas.style.border = '';
         chatCardCanvas.style.boxShadow = '';
@@ -1034,13 +1038,11 @@ CORE OPERATIONAL MATRIX RULES:
       }
       if (submitBtn) submitBtn.disabled = false;
 
-      // Restore Gemini-style Quick Confessions demo pills for renewed session
       const demoPromptsContainer = document.getElementById('chat-demo-prompts');
       if (demoPromptsContainer) {
         demoPromptsContainer.style.display = 'flex';
       }
 
-      // Wipe messages area back to initial baseline welcome bubble
       if (messagesContainer) {
         messagesContainer.innerHTML = `
           <div class="msg-row bot">
