@@ -211,7 +211,7 @@ CORE OPERATIONAL MATRIX RULES:
     const ms = getMsUntilMidnightUTC();
     const hours = Math.floor(ms / (1000 * 60 * 60));
     const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
-    return `${hours}h ${minutes}m`;
+    return `${hours}h${minutes}m`;
   }
 
   let tokensRemaining = DAILY_QUOTA_MAX;
@@ -251,7 +251,7 @@ CORE OPERATIONAL MATRIX RULES:
 
   function updateTokensDisplay() {
     if (tokenText) {
-      tokenText.textContent = `${tokensRemaining} / ${DAILY_QUOTA_MAX} Free Tokens`;
+      tokenText.textContent = `${tokensRemaining} /${DAILY_QUOTA_MAX} Free Tokens`;
     }
     const tokenBadgeEl = document.getElementById('token-badge');
     if (tokenBadgeEl) {
@@ -695,27 +695,53 @@ CORE OPERATIONAL MATRIX RULES:
     }
   }
 
-  // ==========================================================================
+    // ==========================================================================
   // Core Dispatch Engine: Live GitHub-Optimized Gemini SDK Bridge & Fallbacks
   // ==========================================================================
   async function executeMultiTurnGeneration(cleanMsg, isShortDemand, interactionType = 'substantive') {
     let replyText = '';
 
-    // Check precompiled knowledge base first for instant, zero-latency precision matching over 100+ inputs
-    const lowerKey = cleanMsg.toLowerCase().replace(/[?!.]/g, '').trim();
-    if (PRECOMPILED_KNOWLEDGE_BANK[lowerKey]) {
-      replyText = PRECOMPILED_KNOWLEDGE_BANK[lowerKey];
-    } else {
-      // Fuzzy substring match across knowledge base keys for maximum coverage
-      for (const [key, val] of Object.entries(PRECOMPILED_KNOWLEDGE_BANK)) {
-        if (lowerKey.includes(key) || key.includes(lowerKey)) {
-          replyText = val;
-          break;
+    // Primary Route (Cloudflare Proxy): Fire request directly to Cloudflare Worker before any local database matching
+    try {
+      const res = await fetch('https://workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: cleanMsg,
+          history: chatHistorySession,
+          mood: currentMood,
+          interactionType: interactionType,
+          isOneLine: isShortDemand
+        })
+      });
+      
+      // ক্লাউডফ্লেয়ার প্রক্সি থেকে ডাটা রিড করার ১০০% সঠিক পার্সিং লজিক
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) replyText = data.reply.trim();
+      } else {
+        throw new Error(`Server returned status ${res.status}`);
+      }
+    } catch (netErr) {
+      console.warn("Cloudflare proxy primary route failed, falling back to local database matrix:", netErr);
+    }
+
+    // Secondary Fallback Route 1: Pre-compiled knowledge base precision and fuzzy matching
+    if (!replyText) {
+      const lowerKey = cleanMsg.toLowerCase().replace(/[?!.]/g, '').trim();
+      if (typeof PRECOMPILED_KNOWLEDGE_BANK !== 'undefined' && PRECOMPILED_KNOWLEDGE_BANK[lowerKey]) {
+        replyText = PRECOMPILED_KNOWLEDGE_BANK[lowerKey];
+      } else if (typeof PRECOMPILED_KNOWLEDGE_BANK !== 'undefined') {
+        for (const [key, val] of Object.entries(PRECOMPILED_KNOWLEDGE_BANK)) {
+          if (lowerKey.includes(key) || key.includes(lowerKey)) {
+            replyText = val;
+            break;
+          }
         }
       }
     }
 
-    // If not found in precompiled vault, execute primary GitHub Pages compatible Gemini SDK Client bridge
+    // Secondary Fallback Route 2: Client-side Gemini SDK startChat bridge
     if (!replyText && activeChat && aiApiKey && aiApiKey !== "YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE") {
       try {
         const payloadText = isShortDemand
@@ -730,28 +756,7 @@ CORE OPERATIONAL MATRIX RULES:
       }
     }
 
-    // Secondary Route: Optional Server-side proxy if hosted with backend support
-    if (!replyText) {
-      try {
-        const res = await fetch('https://sugarcoat-proxy.rayaantasnim.workers.dev', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: cleanMsg,
-            history: chatHistorySession,
-            mood: currentMood,
-            interactionType: interactionType,
-            isOneLine: isShortDemand
-          })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.reply) replyText = data.reply.trim();
-        }
-      } catch (netErr) {}
-    }
-
-    // Tertiary Resilient Fallback: High-energy local generator respecting operational rules
+    // Secondary Fallback Route 3: High-energy local generator fallback matrix
     if (!replyText) {
       if (isShortDemand) {
         replyText = generateOneLinePunchy(cleanMsg, currentMood);
@@ -767,6 +772,7 @@ CORE OPERATIONAL MATRIX RULES:
 
     return replyText;
   }
+
 
   // ==========================================================================
   // Orchestration Pipeline (Main Form Submission & Ticker Handler)
