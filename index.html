@@ -47,6 +47,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/nav.js" defer></script>
     <script src="integrated-js/index.js"></script>
+
+    <style>
+      #dopamine-telemetry-img {
+          width: clamp(56px, 8vw, 72px);
+          height: clamp(56px, 8vw, 72px);
+          object-fit: contain;
+          display: block;
+          margin: 0 auto 1rem auto;
+          padding: 10px;
+          background: rgba(236, 72, 153, 0.08);
+          border: 1px solid rgba(236, 72, 153, 0.25);
+          border-radius: 16px;
+          box-shadow: 0 0 20px rgba(236, 72, 153, 0.18);
+      }
+    </style>
   </head>
   <body class="bg-gradient-default">
     <div class="bg-ambient-layer" aria-hidden="true"></div>
@@ -302,10 +317,11 @@
              ================================================================== -->
         <section id="fast-sugarcoat-station" class="container" style="margin: 1.5rem auto 2.5rem;">
           <div class="section-header" style="margin-bottom: 1.5rem;">
+            <img src="favicon.ico" id="dopamine-telemetry-img" alt="Section header illustration">
             <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-sugar);">Instant Dopamine Telemetry</span>
             <h2 class="section-title">Confess Your Daily Mess-Up</h2>
             <p class="section-subtitle">Take 5 seconds to test our sarcastic validation engine on whatever went wrong today.</p>
-          </div>
+        </div>
 
           <!-- Centered frosted glass-card containing interactive mini-box form -->
           <div id="mini-box-anchor" class="hero-mini-box-wrapper" style="margin: 0 auto; max-width: 780px;">
